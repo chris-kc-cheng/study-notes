@@ -1,4 +1,4 @@
-# Cheat Sheet for the CIPM Program
+# Cheat Sheet for the CIPM Program Level II
 
 ## Ethical and Professional Standards
 
@@ -260,10 +260,52 @@ Note: No residual
 
 ## Performance Appraisal
 
+### Topics
+- Managers' skill should be sufficient to overcome fee and trading costs
+- Gross-of-fee analysis maybe useful for asset owners with sufficient scale to negotiate
+- t-statistic is the ratio of the estimated intercept to its standard error. e.g. $t=\frac{\alpha}{s/\sqrt{n}}$
+- Type I error: Hiring an unskilled manager
+- Type II error: Not hiring a skilled manager
+- There is a tradeoff between Type I and Type II error, unless more data is used
+- 3 principles:
+  1. Appropriate benchmark
+  2. Appropriate estimation model
+  3. Validate the model fit
+- 14 common pitfalls
+  1. Noise, use quality control chart
+  2. Past return is not reliable indicator of future performance, should also assess firm, process and sfaff
+  3. Benchmark, should represent the process, risk factor, investible with proper treatment of cash
+  4. Appraisal measure, context matters - standalone vs total portfolio
+  5. Scalability of risk, if there is restriction in leverage or hedging
+  6. Synthesized exposure, off-benchmark risk that should be penalized and it can be exposed through factor analysis
+  7. Effect of total AUM across multiple products, market impact cost
+  8. Constraints, e.g. country, market cap, ESG, legal/regulatory
+  9. Benchmark and risk-free rate are the opportunity cost\
+     Note: High volatility dampens the geometric return but not arithmetic return, resulting in double jeopardy
+  10. Portfolio or utility, appraisal ratio to determine the marginal benefit of a new manager
+  11. Convexity or Tactical Asset Allocation, factor analysis is unable to detect
+  12. Valuable information is lost if track record is truncated
+  13. Serial correlation, smoothed return
+  14. Selection biases e.g. backfill
+
+### Equity Style Analysis: Beyond Performance Measurement
+
 ## Manager Selection
+
+### Introduction
+
+### Topics
+
+### Case Studies
+
+### Setting Weights
+
+### Dimensions of Active Management
 
 ## Investment Performance Presentation
 
+### GIPS Standard
 
+## GIPS Standard for Firms
 
-## GIPS Standard
+https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf
