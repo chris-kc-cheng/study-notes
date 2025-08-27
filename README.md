@@ -264,8 +264,8 @@ Note: No residual
 - Managers' skill should be sufficient to overcome fee and trading costs
 - Gross-of-fee analysis maybe useful for asset owners with sufficient scale to negotiate
 - t-statistic is the ratio of the estimated intercept to its standard error. e.g. $t=\frac{\alpha}{s/\sqrt{n}}$
-- Type I error: Hiring an unskilled manager
-- Type II error: Not hiring a skilled manager
+- Type I error: Hiring (or retaining) an unskilled manager, error of commission
+- Type II error: Not hiring (or firing) a skilled manager
 - There is a tradeoff between Type I and Type II error, unless more data is used
 - 3 principles:
   1. Appropriate benchmark
@@ -288,11 +288,49 @@ Note: No residual
   13. Serial correlation, smoothed return
   14. Selection biases e.g. backfill
 
+Factor-based benchmarks
+- Carhart four-factor mode: RMRF, SMB (Size), HML (Value), WML (Momentum)
+- Elton and Gruber: RMRF, FIRF (Excess return of Bloomberg Barclays Aggregate Bond Index), TERM (10Y vs 30d yield), DEFAULT (Baa - Treasury yield), OPTION (Bloomberg Barclays GNMA - government bond w/ same duration)
+
+...
+
+Addition to Current Portfolio
+```math
+    \alpha = r_{new} - \beta_{new}(r_p) \\
+    \beta_{new} = \frac{cov_{new,p}}{\sigma^2_p} = \rho\frac{\sigma_{new}}{\sigma_p} \\
+    \sigma^2_{\varepsilon,new} = \sigma^2_{new} - \beta^2\sigma^2_p
+```
+ 
+ - Fung and Hsieh: RMRF, SMB, TREAS10YR (Constant maturity yield), CREDIT (Baa - Treasury yield), BONDPTFS, CURRPTFS, COMMPTFS (3 primitive trend-following strategies)
+ - Treynor-Mazuy: RMRF, $(RMRF_t)^2$
+ - Henriksson-Merton: RMRF, $(RMRF_t)^+$
+
 ### Equity Style Analysis: Beyond Performance Measurement
+
+1. Traditional growth vs cyclical opportunities?
+    - Long Term Growth IBES Means (Forecast, premium) vs EPS Growth - 5 Years (Historical)
+2. Avoid negative earnings surprise?
+    - Long Term Growth IBES Means vs Negative Earnings Surprise
+3. Justify the price paid?
+    - P/E (excl. negative earnings) vs Positive Earnings Surprise
+4. Earnings quality
+    - Cash Flow 5 Yrs Growth vs EPS Growth - 5 Yrs
+5. Performance volatility
+    - EPS Growth - 5 Years vs EPS Variability - 5 Years (correlated to general economic performance)
+6. Different market environments
+7. Multiple portfolio characteristics
+8. Across multiple time periods
 
 ## Manager Selection
 
 ### Introduction
+
+- The smaller the difference in sample size and distribution mean (doesn't make a difference whoever I hired/fired) AND the wider the dispersion of the distribution (easier to distinguish relative skill), the smaller the expected cost of Type I and Type II error.
+- Returns-based style analysis (RBSA), top-down, imprecise, not subject to window dressing
+- Holdings-based style analysis (HBSA), bottom-up, style map
+- Up/down capture ratio: use geometric average
+- Batting average (Absolute: investment decisions, Relative: return relative to benchmark)
+- Active share: $$ = \frac{1}{2}\sum_{i=1}^{N}{|w_i - W_i|}$$
 
 ### Topics
 
@@ -300,11 +338,35 @@ Note: No residual
 
 ### Setting Weights
 
+- Mean-lower partial moments (LPM): sum of squared differences below a target mean
+- "Misfit" risk: delta between investor benchmarks and normal portfolio
+
 ### Dimensions of Active Management
+
+- Alpha forecasts can be backed out of the portfolio holdings, using reverse optimization
 
 ## Investment Performance Presentation
 
 ### GIPS Standard
+
+- Applied on a firm-wide basis, held out to the public as a distinct business entity
+- At least five-year period or since inception, build up to a minimum of 10 years
+- Total firm assets:
+    - Include non-discretionary (unable to fully implement) portfolio assets, and assets managed by sub-advisors that the firm has authority to select
+    - NOT include advisory-only (no authority) assets, uncalled committed capital, or overlay exposure
+- Prospective client (composite strategy)/investor (pooled fund): expressed interest, and qualified to invest
+- Money-weighted return only if 1. has control over external cash flows, and 2a. portfolio is closed-end/fixed-life/fixed-commitment, or 2b. significant illiquid investments
+- Composite
+    - Asset-weighted average
+    - May include non-fee-paying portfolios
+    - NOT include non-discretionary
+    - Carve-Outs: Must create a separate composite once the firm obtains standalone portfolios
+    - Subscription line of credit: Not require to present returns w/o if principal was repaid within 120 days
+    - Internal dispersion (high/low, interquartile range, 3Yr ann. SD), if there are 6+ portfolios
+- Percentage of non-fee-paying portfolios
+- Percentage of assets valued using subjective unobservable inputs
+- Portability: Decision makers, process, records to support, and no break in the track record
+
 
 ## GIPS Standard for Firms
 
