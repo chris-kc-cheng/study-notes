@@ -29,7 +29,7 @@
     2. Priority of Transactions
     3. Referral Fees
 7. Responsibilities as a CFA Institute Member or CFA Candidate
-    1. COnduct as Participants in CFA Institute Programs
+    1. Conduct as Participants in CFA Institute Programs
     2. Reference to CFA Institute, the CFA Designation, and the CFA Program
 
 ## Performance Measurement
@@ -52,7 +52,9 @@ Notional exposure of futures contracts:
 
 Use price of the underlying (i.e. Spot price) instead of futures price. Otherwise, the equity exposure will be overestimated if the futures price trades at a premium.
 
-Notional return = (Total margin receipt + notional income) / Actual economic exposure
+**Notional return** = (Total margin receipt + notional income) / Actual economic exposure
+
+Note: Same formula for regardless future is long or short.
 
 For notional return calculation, the denominator is always positive regaredless the futures are long or short.
 
@@ -66,6 +68,10 @@ The value of a long forward investment at time $t_1$
 
 Notional return: Similar to futures, but the value need to be discounted.
 
+```math
+    \text{Return} = \frac{\text{Multiplier} \times (F_{t_1} - F_{t_0}) \times (1 + r_{fin})^{-(T-t_1)} + \text{Notional cash} \times \text{Discount rate}}{\text{Notional exposure}}
+```
+
 #### Options
 
 ```math
@@ -74,7 +80,13 @@ Notional return: Similar to futures, but the value need to be discounted.
 
 Notional cash expsoure is the difference between the cost and notional exposure of the options.
 
-Covered interest rate parity
+#### Swap
+
+```math
+    \text{Return} = \frac{(Holding_{Current} - Holding_{Previous}) - (Exposure_{Current} - Exposure_{Previous}) + \text{Bond Interest} +\text{Swap Interest}}{Holding_{Previous} + Exposure_{Previous}}
+```
+
+#### Covered interest rate parity
 
 ```math
     F_0 = S_0\frac{1+r_{FC}}{1+r_{DC}}
@@ -87,10 +99,14 @@ where $F_0$ and $S_0$ are quoted in $\frac{FC}{DC}$.
 - Forward return = $\frac{S_1}{F_0} - 1$
 - Forward currency premium = $\frac{F_0}{S_0} - 1$
 
-Note: Positive forward currency trades at a premium, and forward return is worse than spot return if interest rates in the "nominator" currency is higher.
+Note: Forward currency trades at a premium, and forward return is worse than spot return if interest rates in the "nominator" currency is higher (should depreciate based or covered interest rate parity).
 
-- Base currency return = $\frac{MV / S_1}{MV / S_0} - 1$
-- Currency overlay return = $\frac{MV / F_0 - MV / S_1}{MV / S_0}$
+#### Hedged Return
+
+Calculate in 3 steps:
+
+- Base currency return = $\frac{MV_1 / S_1}{MV_0 / S_0} - 1$
+- Currency overlay return = $\frac{MV_0 / F_0 - MV_0 / S_1}{MV_0 / S_0}$
 - Hedged return = Base currency return + Currency overlay return
 
 Note: MV is quoted in FC. $F_t$ and $S_t$ are quoted in $\frac{FC}{DC}$
@@ -118,10 +134,12 @@ Action: Identify, document, implement control to alert, communicate
 
 #### Composite
 
-1. Accuracy: avoid doubl counting, discretionary status, change/move
+1. Accuracy: avoid double counting, discretionary status, change/move
 2. Completeness: data, details on discretion and disclosure, why not assigned
-3. COnformity: CIPS standard oversight committee
+3. Conformity: GIPS standard oversight committee
 4. Timeliness: assign, disclosure
+
+Note: Comprehensive composite definition = too broad
 
 ## Performance Attribution
 
@@ -154,18 +172,18 @@ Note: Interest on notional cash = Notional asset x Cash return. It can be negati
 
 #### Karnosky and Singer Multi-currency Attribution
 
-Step 1
+Step 1 - Calculate equity risk premium (B_L) and foreign cash return converted to base currency(C)
 ```math
     R = \sum_{i=1}^n{w_i(R_{Li}-I_i)} + \sum_{i=1}^n{(w_i + \tilde{w_i})(C_i+I_i)}
 ```
 ```math
     B = \underbrace{\sum_{i=1}^n{W_i(B_{Li}-I_i)}}_{B_L} + \underbrace{\sum_{i=1}^n{(W_i + \tilde{W_i})(C_i+I_i)}}_{C}
 ```
-Step 2
+Step 2 - Calculate the 3 effects
 
 Allocation
 ```math
-    A_i = (w_i - W_i)(B_{Li} - I - B_L)
+    A_i = (w_i - W_i)(B_{Li} - I_i - B_L)
 ```
 
 Selection
@@ -175,7 +193,7 @@ Selection
 
 Currency allocation
 ```math
-    CA_i = [(w_i + \tilde{w_i}) - (W_i + \tilde{W_i}))] \times (C_{i} + I - C)
+    CA_i = [(w_i + \tilde{w_i}) - (W_i + \tilde{W_i}))] \times (C_{i} + I_i - C)
 ```
 
 #### Geometric Multi-Currency Attribution
@@ -230,14 +248,14 @@ Note: Please refer to p.359 for revised country allocation
 
 - Passage of time
   - Initial yield = $Y \times \Delta t$
-  - Roll down = $-D \times \Delta Y^{Roll} + \frac{1}{2} \times C \times (\Delta Y^{Roll})^2$
+  - Roll down = $-D \times \Delta Y^{\text{Roll}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Roll}})^2$
 - Curve variation
-  - Shift = $-D \times \Delta Y^{Shift} + \frac{1}{2} \times C \times (\Delta Y^{Shift})^2$
-  - Slope = $-D \times \Delta Y^{Slope} + \frac{1}{2} \times C \times (\Delta Y^{Slope})^2$
-  - Curvation = $-D \times \Delta Y^{Shape} + \frac{1}{2} \times C \times (\Delta Y^{Shape})^2$
+  - Shift = $-D \times \Delta Y^{\text{Shift}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shift}})^2$
+  - Slope = $-D \times \Delta Y^{\text{Slope}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Slope}})^2$
+  - Curvation = $-D \times \Delta Y^{\text{Shape}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shape}})^2$
 - Spread variation
-  - Sector = $-D \times \Delta Y^{Systematic} + \frac{1}{2} \times C \times (\Delta Y^{Systematic})^2$
-  - Specific = $-D \times \Delta Y^{Specific} + \frac{1}{2} \times C \times (\Delta Y^{Specific})^2$
+  - Sector = $-D \times \Delta Y^{\text{Systematic}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Systematic}})^2$
+  - Specific = $-D \times \Delta Y^{\text{Specific}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Specific}})^2$
 
 Note: Residual = Actual return - Estimated return
 
@@ -246,7 +264,7 @@ Note: Residual = Actual return - Estimated return
 - Passage of time
   - Coupon: $Return = \frac{Coupon}{P_T}$
   - Amortization: Using the same set of spot rates, less time to maturity
-    - For bonds priced at a prmium (i.e. coupon rates are higher than market rates), prices converge (i.e. drop) toward par value as time goes by.
+    - For bonds priced at a premium (i.e. coupon rates are higher than market rates), prices converge (i.e. drop) toward par value as time goes by.
   - Roll down: Using the same set of spot rates but rolled down to **lower discount rates**
 - Yield curve movements
   - Shift
@@ -326,6 +344,9 @@ Addition to Current Portfolio
 ### Introduction
 
 - The smaller the difference in sample size and distribution mean (doesn't make a difference whoever I hired/fired) AND the wider the dispersion of the distribution (easier to distinguish relative skill), the smaller the expected cost of Type I and Type II error.
+- If manager performance is mean-reverting
+    - Type I error: hiring a strong performer or firing a poor performer only to see a reversion in performance
+    - Type II error: avoids hiring managers with weak short-term track records or does not fire a strong performing manager with a short-term track record
 - Returns-based style analysis (RBSA), top-down, imprecise, not subject to window dressing
 - Holdings-based style analysis (HBSA), bottom-up, style map
 - Up/down capture ratio: use geometric average
@@ -334,10 +355,13 @@ Addition to Current Portfolio
 
 ### Topics
 
+
 ### Case Studies
 
 ### Setting Weights
 
+- Two-step process: Investors accept beta risk, managers carry residual risk
+- Risk in objective function can be: active return variance, SD, downside risk, beta, LPM
 - Mean-lower partial moments (LPM): sum of squared differences below a target mean
 - "Misfit" risk: delta between investor benchmarks and normal portfolio
 
@@ -355,7 +379,7 @@ Addition to Current Portfolio
     - Include non-discretionary (unable to fully implement) portfolio assets, and assets managed by sub-advisors that the firm has authority to select
     - NOT include advisory-only (no authority) assets, uncalled committed capital, or overlay exposure
 - Prospective client (composite strategy)/investor (pooled fund): expressed interest, and qualified to invest
-- Money-weighted return only if 1. has control over external cash flows, and 2a. portfolio is closed-end/fixed-life/fixed-commitment, or 2b. significant illiquid investments
+- May (not required) to use money-weighted return only if 1. has control over external cash flows, and 2a. portfolio is closed-end/fixed-life/fixed-commitment, or 2b. significant illiquid investments
 - Composite
     - Asset-weighted average
     - May include non-fee-paying portfolios
@@ -365,6 +389,8 @@ Addition to Current Portfolio
     - Internal dispersion (high/low, interquartile range, 3Yr ann. SD), if there are 6+ portfolios
 - Percentage of non-fee-paying portfolios
 - Percentage of assets valued using subjective unobservable inputs
+- Disclosure:
+    - Significant Events: minimum of one year and as long as it is relevant to interpreting the track record
 - Portability: Decision makers, process, records to support, and no break in the track record
 
 
