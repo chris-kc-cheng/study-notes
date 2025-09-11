@@ -153,26 +153,30 @@ Valid benchmark "SAMURAI"
 6. Accountable
 7. Investible
 
+- S: Style exposure, A: Active position
 - Published benchmark-centered (PBC): P = M + A, (B = M)
 - Manager strategy (MS): P = M + S + A
+- Risk band should serve as extreme boundaries around a neutral weight
 
 ### Topics in Return Attribution
 
 #### Brinson-Fachler Arithmetic Attribution
 
-- Allocation $A_i = (w_i - W_i)(B- B_i)$, where $B = \sum^n_{i=1}W_iB_i$
+- Allocation $A_i = (w_i - W_i)(B_i - B)$, where $B = \sum^n_{i=1}W_iB_i$
 - Selection $S_i = w_i(R_i - B_i)$
 
 #### Options
 
-- Total portfolio return = (Stock PnL + Option PnL + Gain on cash) / Total portfolio before adjustment
+- Total portfolio return before adjustment = (Stock PnL + Option PnL + Gain on cash) / Total portfolio before adjustment
 - Equity return = (Stock PnL + Option PnL + Interest on notional cash) / Combined equity exposure
 
-Note: Interest on notional cash = Notional asset x Cash return. It can be negative in notional asset is negative.
+Note: Interest on notional cash = Notional asset x Cash return. It can be negative if notional asset is negative.
 
 #### Karnosky and Singer Multi-currency Attribution
 
-Step 1 - Calculate equity risk premium (B_L) and foreign cash return converted to base currency(C)
+Use continuously compounded (or log) returns, which is additive.
+
+Step 1 - Calculate equity risk premium $B_L$ and foreign cash return converted to base currency $C$
 ```math
     R = \sum_{i=1}^n{w_i(R_{Li}-I_i)} + \sum_{i=1}^n{(w_i + \tilde{w_i})(C_i+I_i)}
 ```
@@ -183,7 +187,7 @@ Step 2 - Calculate the 3 effects
 
 Allocation
 ```math
-    A_i = (w_i - W_i)(B_{Li} - I_i - B_L)
+    A_i = (w_i - W_i)[(B_{Li} - I_i) - B_L]
 ```
 
 Selection
@@ -193,7 +197,7 @@ Selection
 
 Currency allocation
 ```math
-    CA_i = [(w_i + \tilde{w_i}) - (W_i + \tilde{W_i}))] \times (C_{i} + I_i - C)
+    CA_i = [(w_i + \tilde{w_i}) - (W_i + \tilde{W_i}))] \times [(C_{i} + I_i) - C]
 ```
 
 #### Geometric Multi-Currency Attribution
@@ -237,6 +241,8 @@ Note: Please refer to p.359 for revised country allocation
 
 #### Exposure Decomposition - Duration Based (Brinson-Hood-Beebower)
 
+- Top down, benchmark-relative, transactional
+- intuitive, simple data requirement, good for marketing/client reports, not well-versed for quantitative analysis
 - Allocation = $(W_{p,DB} - W_{b,DB}) \times R_{b,GDB}$
   - Total Interest Rate Allocation = Duration Effect + Curve Effect
   - Duration Effect = $\text{Duration return}_{p,DB} \times W_{p,DB} - \text{Duration return}_{b,DB} \times W_{b,DB}$
@@ -246,35 +252,47 @@ Note: Please refer to p.359 for revised country allocation
 
 #### Yield Curve Decomposition - Duration Based
 
-- Passage of time
-  - Initial yield = $Y \times \Delta t$
-  - Roll down = $-D \times \Delta Y^{\text{Roll}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Roll}})^2$
-- Curve variation
-  - Shift = $-D \times \Delta Y^{\text{Shift}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shift}})^2$
-  - Slope = $-D \times \Delta Y^{\text{Slope}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Slope}})^2$
-  - Curvation = $-D \times \Delta Y^{\text{Shape}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shape}})^2$
-- Spread variation
-  - Sector = $-D \times \Delta Y^{\text{Systematic}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Systematic}})^2$
-  - Specific = $-D \times \Delta Y^{\text{Specific}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Specific}})^2$
+- Either top-down (group by portfolio or bucket-level) or buttom-up (security level), buy-and-hold
+- Can be applied separately to portfolios and benchmarks. Difference between the two is the effect of active portfolio management decisions.
+- Requires more data, better suited to decision makers, summary version can be used for marketing/client reports
+- Break down when instruments have embedded options or large movements in market yield (Solution: Use effective duration instead of Modified duration)
+
+| Factor | Return | Notes |
+|:-------|:------:|-------|
+| **Passage of time**   |
+| Initial yield         |$Y \times \Delta t$ | from coupon and amortization
+| Roll down             |$-D \times \Delta Y^{\text{Roll}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Roll}})^2$ | bond will trade at a lower YTM as it approaches maturity
+| **Curve variation**
+| Shift                 | $-D \times \Delta Y^{\text{Shift}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shift}})^2$
+| Slope                 | $-D \times \Delta Y^{\text{Slope}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Slope}})^2$
+| Curvature             | $-D \times \Delta Y^{\text{Shape}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shape}})^2$
+| **Spread variation**
+| Sector                | $-D \times \Delta Y^{\text{Systematic}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Systematic}})^2$
+| Specific              |$-D \times \Delta Y^{\text{Specific}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Specific}})^2$
 
 Note: Residual = Actual return - Estimated return
 
 #### Yield Curve Decomposition - Full Repricing
 
-- Passage of time
-  - Coupon: $Return = \frac{Coupon}{P_T}$
-  - Amortization: Using the same set of spot rates, less time to maturity
-    - For bonds priced at a premium (i.e. coupon rates are higher than market rates), prices converge (i.e. drop) toward par value as time goes by.
-  - Roll down: Using the same set of spot rates but rolled down to **lower discount rates**
-- Yield curve movements
-  - Shift
-  - Slope
-  - Curvation
-- Spread variation
-  - Systematic
-  - Specific
+- Bottom-up security repricing, buy-n-hold
+- Can deal with a broader range of instrument ypes and yield changes
+- Greater variety of quantitative modeling outside of attribution e.g. ex ante risk
 
-Note: No residual
+| Factor | Return | Notes |
+|:-------|:------:|-------|
+|**Passage of time**
+| Coupon                | $\frac{Coupon}{\text{Price}_T}$
+| Amortization          | $\frac{\text{Price}_{\text{Amori}} - \text{Price}_T}{\text{Price}_T}$ | Using the same set of spot rates, less time to maturity. For bonds priced at a premium (i.e. coupon rates are higher than market rates), prices converge (i.e. drop) toward par value as time goes by. |
+| Roll down             | $\frac{\text{Price}_{\text{Roll}} - \text{Price}_\text{Amori}}{\text{Price}_T}$ | Using the same set of spot rates but rolled down to **lower discount rates**
+| **Yield curve movements** |
+| Shift                 | $\frac{\text{Price}_{\text{Shift}} - \text{Price}_\text{Roll}}{\text{Price}_T}$
+| Slope                 | $\frac{\text{Price}_{\text{Slope}} - \text{Price}_\text{Shift}}{\text{Price}_T}$
+| Curvature             | $\frac{\text{Price}_{\text{Curvature}} - \text{Price}_\text{Slope}}{\text{Price}_T}$
+| **Spread variation**  |
+| Systematic            | $\frac{\text{Price}_{\text{Systematic}} - \text{Price}_\text{Curvature}}{\text{Price}_T}$
+| Specific              | $\frac{\text{Price}_{T+1} - \text{Price}_\text{Systematic}}{\text{Price}_T}$
+
+No residual
 
 ## Performance Appraisal
 
@@ -325,8 +343,11 @@ Addition to Current Portfolio
 
 ### Equity Style Analysis: Beyond Performance Measurement
 
+... Add HOW !!!!!!!!!!!!! ...
+
 1. Traditional growth vs cyclical opportunities?
     - Long Term Growth IBES Means (Forecast, premium) vs EPS Growth - 5 Years (Historical)
+    ... TODO: consistency vs cyclical ...
 2. Avoid negative earnings surprise?
     - Long Term Growth IBES Means vs Negative Earnings Surprise
 3. Justify the price paid?
@@ -365,6 +386,8 @@ Addition to Current Portfolio
 - Mean-lower partial moments (LPM): sum of squared differences below a target mean
 - "Misfit" risk: delta between investor benchmarks and normal portfolio
 
+... TODO: pure information ratio ??? ...
+
 ### Dimensions of Active Management
 
 - Alpha forecasts can be backed out of the portfolio holdings, using reverse optimization
@@ -397,3 +420,5 @@ Addition to Current Portfolio
 ## GIPS Standard for Firms
 
 https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf
+
+??? The firm is not required to create a composite that includes only one or more pooled funds unless the firm offers the strategy as a segregated account.
