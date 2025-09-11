@@ -243,12 +243,14 @@ Note: Please refer to p.359 for revised country allocation
 
 - Top down, benchmark-relative, transactional
 - intuitive, simple data requirement, good for marketing/client reports, not well-versed for quantitative analysis
-- Allocation = $(W_{p,DB} - W_{b,DB}) \times R_{b,GDB}$
-  - Total Interest Rate Allocation = Duration Effect + Curve Effect
-  - Duration Effect = $\text{Duration return}_{p,DB} \times W_{p,DB} - \text{Duration return}_{b,DB} \times W_{b,DB}$
-    - Duration Return = Zero-duration RFR + (Duration x Excess return per year)
-- Sector allocation = ${(W_{ps} - W_{bs}) \times (R_{b,SDB} - R_{b,GDB})}$, always zero for government bonds
-- Bond selection = $W_{ps} \times (R_{p,SDB} - R_{b,SDB})$, for both government and corporate bonds
+
+| Factor | Return | Notes |
+|:-------|:------:|-------|
+| **Allocation** | $(W_{p,DB} - W_{b,DB}) \times R_{b,GDB}$ | Duration Effect + Curve Effect
+| Duration Effect | $\text{Duration return}_{p,DB} \times W_{p,DB} - \text{Duration return}_{b,DB} \times W_{b,DB}$
+| Duration Return | Zero-duration RFR + (Duration x Excess return per year)
+| **Sector allocation** | ${(W_{ps} - W_{bs}) \times (R_{b,SDB} - R_{b,GDB})}$, always zero for government bonds
+| **Bond selection** | $W_{ps} \times (R_{p,SDB} - R_{b,SDB})$, for both government and corporate bonds
 
 #### Yield Curve Decomposition - Duration Based
 
@@ -281,16 +283,16 @@ Note: Residual = Actual return - Estimated return
 | Factor | Return | Notes |
 |:-------|:------:|-------|
 |**Passage of time**
-| Coupon                | $\frac{Coupon}{\text{Price}_T}$
-| Amortization          | $\frac{\text{Price}_{\text{Amori}} - \text{Price}_T}{\text{Price}_T}$ | Using the same set of spot rates, less time to maturity. For bonds priced at a premium (i.e. coupon rates are higher than market rates), prices converge (i.e. drop) toward par value as time goes by. |
-| Roll down             | $\frac{\text{Price}_{\text{Roll}} - \text{Price}_\text{Amori}}{\text{Price}_T}$ | Using the same set of spot rates but rolled down to **lower discount rates**
+| Coupon                | $$\frac{Coupon}{\text{Price}_T}$$
+| Amortization          | $$\frac{\text{Price}_{\text{Amori}} - \text{Price}_T}{\text{Price}_T}$$ | Using the same set of spot rates, less time to maturity. For bonds priced at a premium (i.e. coupon rates are higher than market rates), prices converge (i.e. drop) toward par value as time goes by. |
+| Roll down             | $$\frac{\text{Price}_{\text{Roll}} - \text{Price}_\text{Amori}}{\text{Price}_T}$$ | Using the same set of spot rates but rolled down to **lower discount rates**
 | **Yield curve movements** |
-| Shift                 | $\frac{\text{Price}_{\text{Shift}} - \text{Price}_\text{Roll}}{\text{Price}_T}$
-| Slope                 | $\frac{\text{Price}_{\text{Slope}} - \text{Price}_\text{Shift}}{\text{Price}_T}$
-| Curvature             | $\frac{\text{Price}_{\text{Curvature}} - \text{Price}_\text{Slope}}{\text{Price}_T}$
+| Shift                 | $$\frac{\text{Price}_{\text{Shift}} - \text{Price}_\text{Roll}}{\text{Price}_T}$$
+| Slope                 | $$\frac{\text{Price}_{\text{Slope}} - \text{Price}_\text{Shift}}{\text{Price}_T}$$
+| Curvature             | $$\frac{\text{Price}_{\text{Curvature}} - \text{Price}_\text{Slope}}{\text{Price}_T}$$
 | **Spread variation**  |
-| Systematic            | $\frac{\text{Price}_{\text{Systematic}} - \text{Price}_\text{Curvature}}{\text{Price}_T}$
-| Specific              | $\frac{\text{Price}_{T+1} - \text{Price}_\text{Systematic}}{\text{Price}_T}$
+| Systematic            | $$\frac{\text{Price}_{\text{Systematic}} - \text{Price}_\text{Curvature}}{\text{Price}_T}$$
+| Specific              | $$\frac{\text{Price}_{T+1} - \text{Price}_\text{Systematic}}{\text{Price}_T}$$
 
 No residual
 
