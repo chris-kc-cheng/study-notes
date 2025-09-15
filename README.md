@@ -247,7 +247,7 @@ Note: Please refer to p.359 for revised country allocation
 | Factor | Return | Notes |
 |:-------|:------:|-------|
 | **Allocation** | $(W_{p,DB} - W_{b,DB}) \times R_{b,GDB}$ | Duration Effect + Curve Effect
-| &nbsp; Duration Effect | $\text{Duration return}_{\text{p,DB}} \times W_{p,DB} - \text{Duration return}_{\text{b,DB}} \times W_{b,DB}$
+| &nbsp; Duration Effect | $Duration\ return_{p,DB} \times W_{p,DB} - Duration\ return_{b,DB} \times W_{b,DB}$
 | &nbsp; Duration Return | Zero-duration RFR + (Duration x Excess return per year)
 | **Sector allocation** | ${(W_{ps} - W_{bs}) \times (R_{b,SDB} - R_{b,GDB})}$, always zero for government bonds
 | **Bond selection** | $W_{ps} \times (R_{p,SDB} - R_{b,SDB})$, for both government and corporate bonds
