@@ -154,8 +154,8 @@ Valid benchmark "SAMURAI"
 7. Investible
 
 - S: Style exposure, A: Active position
-- Published benchmark-centered (PBC): P = M + A, (B = M)
-- Manager strategy (MS): P = M + S + A
+- Published benchmark-centered (PBC): $P = M + A, (B = M)$
+- Manager strategy (MS): $P = M + S + A$
 - Risk band should serve as extreme boundaries around a neutral weight
 
 ### Topics in Return Attribution
@@ -226,7 +226,7 @@ Isolating the compounding effects
     \underbrace{\frac{1+R_C}{1+R'_C} \times \frac{1+B'_C}{1+B_C}}_{\text{Compounding}} - 1
 ```
 
-where $R'_C=\sum_{i=1}^{n}w_iC_i$, and $B'_C=\sum_{i=1}^{n}W_iC_i$
+where $R_C'=\sum_{i=1}^{n}w_iC_i$, and $B_C'=\sum_{i=1}^{n}W_iC_i$
 
 Note: Please refer to p.359 for revised country allocation
 
@@ -283,16 +283,16 @@ Note: Residual = Actual return - Estimated return
 | Factor | Return | Notes |
 |:-------|:------:|-------|
 |**Passage of time**
-| Coupon                | $$\frac{Coupon}{\text{Price}_T}$$
-| Amortization          | $$\frac{\text{Price}_{\text{Amori}} - \text{Price}_T}{\text{Price}_T}$$ | Using the same set of spot rates, less time to maturity. For bonds priced at a premium (i.e. coupon rates are higher than market rates), prices converge (i.e. drop) toward par value as time goes by. |
-| Roll down             | $$\frac{\text{Price}_{\text{Roll}} - \text{Price}_\text{Amori}}{\text{Price}_T}$$ | Using the same set of spot rates but rolled down to **lower discount rates**
+| &nbsp; Coupon                | $\frac{Coupon}{Price_T}$
+| &nbsp; Amortization          | $\frac{Price_{Amori} - Price_T}{Price_T}$ | Using the same set of spot rates, less time to maturity. For bonds priced at a premium (i.e. coupon rates are higher than market rates), prices converge (i.e. drop) toward par value as time goes by. |
+| &nbsp; Roll down             | $\frac{Price_{Roll} - Price_{Amori}}{Price_T}$ | Using the same set of spot rates but rolled down to **lower discount rates**
 | **Yield curve movements** |
-| Shift                 | $$\frac{\text{Price}_{\text{Shift}} - \text{Price}_\text{Roll}}{\text{Price}_T}$$
-| Slope                 | $$\frac{\text{Price}_{\text{Slope}} - \text{Price}_\text{Shift}}{\text{Price}_T}$$
-| Curvature             | $$\frac{\text{Price}_{\text{Curvature}} - \text{Price}_\text{Slope}}{\text{Price}_T}$$
+| &nbsp; Shift                 | $\frac{Price_{Shift} - Price_{Roll}}{Price_T}$
+| &nbsp; Slope                 | $\frac{Price_{Slope} - Price_{Shift}}{Price_T}$
+| Curvature             | $\frac{Price_{Curvature} - Price_{Slope}}{Price_T}$
 | **Spread variation**  |
-| Systematic            | $$\frac{\text{Price}_{\text{Systematic}} - \text{Price}_\text{Curvature}}{\text{Price}_T}$$
-| Specific              | $$\frac{\text{Price}_{T+1} - \text{Price}_\text{Systematic}}{\text{Price}_T}$$
+| &nbsp; Systematic            | $\frac{Price_{Systematic} - Price_{Curvature}}{Price_T}$
+| &nbsp; Specific              | $\frac{Price_{T+1} - Price_{Systematic}}{Price_T}$
 
 No residual
 
@@ -381,7 +381,7 @@ Addition to Current Portfolio
 - Holdings-based style analysis (HBSA), bottom-up, style map
 - Up/down capture ratio: use geometric average
 - Batting average (Absolute: investment decisions, Relative: return relative to benchmark)
-- Active share: $$ = \frac{1}{2}\sum_{i=1}^{N}{|w_i - W_i|}$$
+- $ \text{Active share} = \frac{1}{2}\sum_{i=1}^{N}|w_i - W_i|$
 
 ### Topics
 
