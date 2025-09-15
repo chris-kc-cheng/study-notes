@@ -247,8 +247,8 @@ Note: Please refer to p.359 for revised country allocation
 | Factor | Return | Notes |
 |:-------|:------:|-------|
 | **Allocation** | $(W_{p,DB} - W_{b,DB}) \times R_{b,GDB}$ | Duration Effect + Curve Effect
-| Duration Effect | $\text{Duration return}_{p,DB} \times W_{p,DB} - \text{Duration return}_{b,DB} \times W_{b,DB}$
-| Duration Return | Zero-duration RFR + (Duration x Excess return per year)
+| &nbsp; Duration Effect | $\text{Duration return}_{\text{p,DB}} \times W_{p,DB} - \text{Duration return}_{\text{b,DB}} \times W_{b,DB}$
+| &nbsp; Duration Return | Zero-duration RFR + (Duration x Excess return per year)
 | **Sector allocation** | ${(W_{ps} - W_{bs}) \times (R_{b,SDB} - R_{b,GDB})}$, always zero for government bonds
 | **Bond selection** | $W_{ps} \times (R_{p,SDB} - R_{b,SDB})$, for both government and corporate bonds
 
@@ -262,15 +262,15 @@ Note: Please refer to p.359 for revised country allocation
 | Factor | Return | Notes |
 |:-------|:------:|-------|
 | **Passage of time**   |
-| Initial yield         |$Y \times \Delta t$ | from coupon and amortization
-| Roll down             |$-D \times \Delta Y^{\text{Roll}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Roll}})^2$ | bond will trade at a lower YTM as it approaches maturity
+| &nbsp; Initial yield         |$Y \times \Delta t$ | from coupon and amortization
+| &nbsp; Roll down             |$-D \times \Delta Y^{\text{Roll}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Roll}})^2$ | bond will trade at a lower YTM as it approaches maturity
 | **Curve variation**
-| Shift                 | $-D \times \Delta Y^{\text{Shift}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shift}})^2$
-| Slope                 | $-D \times \Delta Y^{\text{Slope}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Slope}})^2$
-| Curvature             | $-D \times \Delta Y^{\text{Shape}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shape}})^2$
+| &nbsp; Shift                 | $-D \times \Delta Y^{\text{Shift}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shift}})^2$
+| &nbsp; Slope                 | $-D \times \Delta Y^{\text{Slope}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Slope}})^2$
+| &nbsp; Curvature             | $-D \times \Delta Y^{\text{Shape}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Shape}})^2$
 | **Spread variation**
-| Sector                | $-D \times \Delta Y^{\text{Systematic}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Systematic}})^2$
-| Specific              |$-D \times \Delta Y^{\text{Specific}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Specific}})^2$
+| &nbsp; Sector                | $-D \times \Delta Y^{\text{Systematic}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Systematic}})^2$
+| &nbsp; Specific              |$-D \times \Delta Y^{\text{Specific}} + \frac{1}{2} \times C \times (\Delta Y^{\text{Specific}})^2$
 
 Note: Residual = Actual return - Estimated return
 
@@ -345,20 +345,24 @@ Addition to Current Portfolio
 
 ### Equity Style Analysis: Beyond Performance Measurement
 
-... Add HOW !!!!!!!!!!!!! ...
-
 1. Traditional growth vs cyclical opportunities?
     - Long Term Growth IBES Means (Forecast, premium) vs EPS Growth - 5 Years (Historical)
-    ... TODO: consistency vs cyclical ...
+    - **High** historical earning growth coupled with high forecasted earnings = Buying high secular growth, Exhibit greater earnings **consistency**
+    - **Low** historical earning growth coupled with high forecasted earnings = Focused on expected changes in earnings, invest in highly **cyclical** companies and have more economically sensitive performance    
 2. Avoid negative earnings surprise?
-    - Long Term Growth IBES Means vs Negative Earnings Surprise
-3. Justify the price paid?
+    - Long Term Growth IBES Means vs Negative Earnings Surprise (Earnings that fall below estimates)
+    - Going extreme on high forecasted growth increased the likelihood of exposure to negative earnings surprise but also amplify the negative effects
+3. **Justify** the price paid?
     - P/E (excl. negative earnings) vs Positive Earnings Surprise
+    - High percentage of Negative Earnings Surprise at a given P/E ratio (no clear linear relationship) indicates the manager may be a poor judge at forecasting earnings
 4. Earnings quality
     - Cash Flow 5 Yrs Growth vs EPS Growth - 5 Yrs
+    - Cash Flow Growth should be close to or above its EPS Growth
 5. Performance volatility
     - EPS Growth - 5 Years vs EPS Variability - 5 Years (correlated to general economic performance)
+    - High EPS Variability likely suggests that performance will be highly correlated with general economic performance, and sensitive to earnings change
 6. Different market environments
+    - e.g. Rising/falling market, or periods that favor certain strategy
 7. Multiple portfolio characteristics
 8. Across multiple time periods
 
@@ -368,8 +372,11 @@ Addition to Current Portfolio
 
 - The smaller the difference in sample size and distribution mean (doesn't make a difference whoever I hired/fired) AND the wider the dispersion of the distribution (easier to distinguish relative skill), the smaller the expected cost of Type I and Type II error.
 - If manager performance is mean-reverting
-    - Type I error: hiring a strong performer or firing a poor performer only to see a reversion in performance
-    - Type II error: avoids hiring managers with weak short-term track records or does not fire a strong performing manager with a short-term track record
+    - Type I error: Reject null hypothesis of no skill
+        - Hiring / retain (does not fire) a (no skill) strong performer only to see a reversion in performance        
+    - Type II error: Not rejecting the null hypothesis
+        - avoids hiring (skilled) managers with weak short-term track records
+        - firing a poor performer only to see a reversion in performance
 - Returns-based style analysis (RBSA), top-down, imprecise, not subject to window dressing
 - Holdings-based style analysis (HBSA), bottom-up, style map
 - Up/down capture ratio: use geometric average
