@@ -301,18 +301,18 @@ No residual
 ### Topics
 - Managers' skill should be sufficient to overcome fee and trading costs
 - Gross-of-fee analysis maybe useful for asset owners with sufficient scale to negotiate
-- t-statistic is the ratio of the estimated intercept to its standard error. e.g. $t=\frac{\alpha}{s/\sqrt{n}}$
+- t-statistic is the ratio of the estimated intercept to its standard error. e.g. $t=\frac{\alpha}{s/\sqrt{n}}$. No skill if t-value < 2.
 - Type I error: Hiring (or retaining) an unskilled manager, error of commission
 - Type II error: Not hiring (or firing) a skilled manager
-- There is a tradeoff between Type I and Type II error, unless more data is used
+- There is a tradeoff between Type I and Type II error (costly manager change), unless more data is used
 - 3 principles:
   1. Appropriate benchmark
-  2. Appropriate estimation model
+  2. Appropriate estimation model (reflect risk exposure) e.g. CAPM
   3. Validate the model fit
 - 14 common pitfalls
   1. Noise, use quality control chart
   2. Past return is not reliable indicator of future performance, should also assess firm, process and sfaff
-  3. Benchmark, should represent the process, risk factor, investible with proper treatment of cash
+  3. Benchmark, should represent the process, risk factor, investible with proper treatment of cash, non-linear relationships
   4. Appraisal measure, context matters - standalone vs total portfolio
   5. Scalability of risk, if there is restriction in leverage or hedging
   6. Synthesized exposure, off-benchmark risk that should be penalized and it can be exposed through factor analysis
@@ -329,19 +329,42 @@ No residual
 Factor-based benchmarks
 - Carhart four-factor mode: RMRF, SMB (Size), HML (Value), WML (Momentum)
 - Elton and Gruber: RMRF, FIRF (Excess return of Bloomberg Barclays Aggregate Bond Index), TERM (10Y vs 30d yield), DEFAULT (Baa - Treasury yield), OPTION (Bloomberg Barclays GNMA - government bond w/ same duration)
+- Requirements for factors
+    1. Investiable, reflect costs
+    2. Comprehensive, not omitting relevant factors
+    3. Proxy for systematic risk (not just return, spurious)
+    4. Specified in advance
+- Independent and identically distributed (IID), "stationary",watch out for heteroskedasticity
 
-...
+Superior Active Managers
+- Experience, at least among large funds
+- Social connections with portfolio companies
+- Academic: High SAT scores/high-quality MBA tends to outperform; CFA takes lower tracking-error risk
+- Contrarian, supply liquidity
+- Positive return gap (fund vs publicly disclosed holdings), opposite is "window dressing"
+- Stable risk profile (realized volatility fund vs volatility estimated from reported holdings). "Risk shifting" when fund managers "lock in" gains or "double down"
+- High active share and low turnover
+- Lower expense ratios, load fees and turnover tends to outperform (high cash holdings tends to underperform)
+
+For Sharpe, Information and Appraisal ratios, the t-statistic is equal to the respective ratio multiplied by the square root of the **number of periods** (# of years if ratios are annualized)
 
 Addition to Current Portfolio
-```math
-    \alpha = r_{new} - \beta_{new}(r_p) \\
-    \beta_{new} = \frac{cov_{new,p}}{\sigma^2_p} = \rho\frac{\sigma_{new}}{\sigma_p} \\
-    \sigma^2_{\varepsilon,new} = \sigma^2_{new} - \beta^2\sigma^2_p
-```
+$$ \alpha = r_{new} - \beta_{new}(r_p) $$
+$$ \beta_{new} = \frac{cov_{new,p}}{\sigma^2_p} = \rho\frac{\sigma_{new}}{\sigma_p} $$
+$$ \sigma^2_{\varepsilon,new} = \sigma^2_{new} - \beta^2\sigma^2_p $$
+$$ Appraisal\ Ratio = \frac{\alpha}{\sigma_\epsilon} $$
+where $\sigma_\epsilon$ is the "standard erro of regression" and is the standard deviation of $\epsilon_t$
  
- - Fung and Hsieh: RMRF, SMB, TREAS10YR (Constant maturity yield), CREDIT (Baa - Treasury yield), BONDPTFS, CURRPTFS, COMMPTFS (3 primitive trend-following strategies)
- - Treynor-Mazuy: RMRF, $(RMRF_t)^2$
- - Henriksson-Merton: RMRF, $(RMRF_t)^+$
+Appraisal of non-linear strategies
+- If option-like returns are insignificant, may add risk factor to model or create custome benchmark e.g. Elton-Gruber
+- If non-linear payoffs are significant, use more complex "strategy-based" factors that minic the changing non-linearity
+    - $C(k_1)$, $C(k_2)$, $P(k_1)$, $P(k_2)$
+    - Fung and Hsieh: RMRF, SMB, TREAS10YR (Constant maturity yield), CREDIT (Baa - Treasury yield), BONDPTFS, CURRPTFS, COMMPTFS (3 primitive trend-following strategies)
+- If non-linearity is result from TAA
+    - Treynor-Mazuy (proportional timer): RMRF, $(RMRF_t)^2$
+    - Henriksson-Merton (2 values of beta): RMRF, $(RMRF_t)^+$
+
+CAPM appraisal ratio is suitable for client who wants to limit tracking error but is able to use futures to adjust the beta.
 
 ### Equity Style Analysis: Beyond Performance Measurement
 
@@ -360,7 +383,7 @@ Addition to Current Portfolio
     - Cash Flow Growth should be close to or above its EPS Growth
 5. Performance volatility
     - EPS Growth - 5 Years vs EPS Variability - 5 Years (correlated to general economic performance)
-    - High EPS Variability likely suggests that performance will be highly correlated with general economic performance, and sensitive to earnings change
+    - High EPS Variability likely suggests that performance will be highly correlated with **general economic performance** , and sensitive to **earnings change**
 6. Different market environments
     - e.g. Rising/falling market, or periods that favor certain strategy
 7. Multiple portfolio characteristics
@@ -381,7 +404,8 @@ Addition to Current Portfolio
 - Holdings-based style analysis (HBSA), bottom-up, style map
 - Up/down capture ratio: use geometric average
 - Batting average (Absolute: investment decisions, Relative: return relative to benchmark)
-- $ \text{Active share} = \frac{1}{2}\sum_{i=1}^{N}|w_i - W_i|$
+
+$$ \text{Active\ share} = \frac{1}{2}\sum_{i=1}^{N}|w_i - W_i| $$
 
 ### Topics
 
