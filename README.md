@@ -349,10 +349,15 @@ Superior Active Managers
 For Sharpe, Information and Appraisal ratios, the t-statistic is equal to the respective ratio multiplied by the square root of the **number of periods** (# of years if ratios are annualized)
 
 Addition to Current Portfolio
+
 $$ \alpha = r_{new} - \beta_{new}(r_p) $$
+
 $$ \beta_{new} = \frac{cov_{new,p}}{\sigma^2_p} = \rho\frac{\sigma_{new}}{\sigma_p} $$
+
 $$ \sigma^2_{\varepsilon,new} = \sigma^2_{new} - \beta^2\sigma^2_p $$
+
 $$ Appraisal\ Ratio = \frac{\alpha}{\sigma_\epsilon} $$
+
 where $\sigma_\epsilon$ is the "standard erro of regression" and is the standard deviation of $\epsilon_t$
  
 Appraisal of non-linear strategies
@@ -393,37 +398,58 @@ CAPM appraisal ratio is suitable for client who wants to limit tracking error bu
 
 ### Introduction
 
+- Process: 3 steps
+    1. Universe: suitability, style, active vs passive
+    2. Quantitative analysis: Quantative IDD, attribution & appraisal, capture ratio, drawdown
+    3. Qualitative analysis
 - The smaller the difference in sample size and distribution mean (doesn't make a difference whoever I hired/fired) AND the wider the dispersion of the distribution (easier to distinguish relative skill), the smaller the expected cost of Type I and Type II error.
-- If manager performance is mean-reverting
-    - Type I error: Reject null hypothesis of no skill
+- Less frequent trading requires higher betting average (absolute) to produce the same risk-adjusted return
+- If manager performance is **mean-reverting**
+    - Type I error: Reject null hypothesis of no skill. Error of commission. Explicit cost.
         - Hiring / retain (does not fire) a (no skill) strong performer only to see a reversion in performance        
-    - Type II error: Not rejecting the null hypothesis
+    - Type II error: Not rejecting the null hypothesis. Opportunity cost.
         - avoids hiring (skilled) managers with weak short-term track records
         - firing a poor performer only to see a reversion in performance
 - Returns-based style analysis (RBSA), top-down, imprecise, not subject to window dressing
 - Holdings-based style analysis (HBSA), bottom-up, style map
-- Up/down capture ratio: use geometric average
+- Up/down capture ratio: use geometric average, >1: Convex, <1: Concave
 - Batting average (Absolute: investment decisions, Relative: return relative to benchmark)
-
 $$ \text{Active\ share} = \frac{1}{2}\sum_{i=1}^{N}|w_i - W_i| $$
+- Qualitative: Investment Decision-Making Process:
+    1. Signal creation (idea generation), How? Unique, timely, interpreted differently
+    2. Signal capture: Translate idea into a position
+    3. Portfolio construction: allocation, conviction, stop-loss, etc.
+    4. Portfolio monitoring
 
 ### Topics
 
+- Real estate
+    - Leverage increase correlation with financial asset returns: Core < Value-add < Opportunistic
 
-### Case Studies
+Also see p.291-292
 
 ### Setting Weights
 
-- Two-step process: Investors accept beta risk, managers carry residual risk
-- Risk in objective function can be: active return variance, SD, downside risk, beta, LPM
+Utility function:
+$$ E[U] = E[rs-rb] - \lambda\sigma^2(rs-rb) $$
+
+- Active Return instead of Total Return
+    - Asset classes existed for centries, but manager's career is relative short
+    - Two-step process: Investors accept beta risk, managers carry residual risk
+- Risk in objective function can be: active return variance, SD, downside risk, beta, mean-lower partial moments LPM
 - Mean-lower partial moments (LPM): sum of squared differences below a target mean
 - "Misfit" risk: delta between investor benchmarks and normal portfolio
-
-... TODO: pure information ratio ??? ...
+- Active managers requires more monitoring than indexed managers
 
 ### Dimensions of Active Management
 
 - Alpha forecasts can be backed out of the portfolio holdings, using reverse optimization
+- Pure active risk: cannot be rewarded on average, zero-sum game
+- To optimize a manager structure, optimize pure active return against total active risk (pure active risk + net misfit risk taken across all managers)
+- Information Ratio
+    - For a single manager: Pure information ratio $ IR = \frac{\alpha}{\omega} $
+    - For a portfolio of active managers: $ IR = \frac{\alpha}{\sigma_A} $ where simple active risk $\sigma_A$ is the aggregation of the $\omega$ term plus any net misfit risk remaining across the group of managers
+- Lower active risk manager is preferred (assuming same information ratio), risk is punished twice
 
 ## Investment Performance Presentation
 
@@ -437,6 +463,7 @@ $$ \text{Active\ share} = \frac{1}{2}\sum_{i=1}^{N}|w_i - W_i| $$
 - Prospective client (composite strategy)/investor (pooled fund): expressed interest, and qualified to invest
 - May (not required) to use money-weighted return only if 1. has control over external cash flows, and 2a. portfolio is closed-end/fixed-life/fixed-commitment, or 2b. significant illiquid investments
 - Composite
+    - The firm is not required to create a composite that includes only one or more pooled funds unless the firm offers the strategy as a segregated account.
     - Asset-weighted average
     - May include non-fee-paying portfolios
     - NOT include non-discretionary
@@ -453,5 +480,3 @@ $$ \text{Active\ share} = \frac{1}{2}\sum_{i=1}^{N}|w_i - W_i| $$
 ## GIPS Standard for Firms
 
 https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf
-
-??? The firm is not required to create a composite that includes only one or more pooled funds unless the firm offers the strategy as a segregated account.
