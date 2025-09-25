@@ -358,16 +358,16 @@ $$ \sigma^2_{\varepsilon,new} = \sigma^2_{new} - \beta^2\sigma^2_p $$
 
 $$ Appraisal\ Ratio = \frac{\alpha}{\sigma_\epsilon} $$
 
-where $\sigma_\epsilon$ is the "standard erro of regression" and is the standard deviation of $\epsilon_t$
+where $\sigma_\epsilon$ is the "standard error of regression" and is the standard deviation of $\epsilon_t$
  
 Appraisal of non-linear strategies
 - If option-like returns are insignificant, may add risk factor to model or create custome benchmark e.g. Elton-Gruber
 - If non-linear payoffs are significant, use more complex "strategy-based" factors that minic the changing non-linearity
     - $C(k_1)$, $C(k_2)$, $P(k_1)$, $P(k_2)$
-    - Fung and Hsieh: RMRF, SMB, TREAS10YR (Constant maturity yield), CREDIT (Baa - Treasury yield), BONDPTFS, CURRPTFS, COMMPTFS (3 primitive trend-following strategies)
+    - Fung and Hsieh: $RMRF$, $SMB$, $TREAS10YR$ (Constant maturity yield), $CREDIT$ (Baa - Treasury yield), $BONDPTFS$, $CURRPTFS$, $COMMPTFS$ (3 primitive trend-following strategies)
 - If non-linearity is result from TAA
-    - Treynor-Mazuy (proportional timer): RMRF, $(RMRF_t)^2$
-    - Henriksson-Merton (2 values of beta): RMRF, $(RMRF_t)^+$
+    - Treynor-Mazuy (proportional timer): $RMRF$, $(RMRF_t)^2$
+    - Henriksson-Merton (2 values of beta): $RMRF$, $(RMRF_t)^+$
 
 CAPM appraisal ratio is suitable for client who wants to limit tracking error but is able to use futures to adjust the beta.
 
@@ -414,7 +414,9 @@ CAPM appraisal ratio is suitable for client who wants to limit tracking error bu
 - Holdings-based style analysis (HBSA), bottom-up, style map
 - Up/down capture ratio: use geometric average, >1: Convex, <1: Concave
 - Batting average (Absolute: investment decisions, Relative: return relative to benchmark)
+
 $$ \text{Active\ share} = \frac{1}{2}\sum_{i=1}^{N}|w_i - W_i| $$
+
 - Qualitative: Investment Decision-Making Process:
     1. Signal creation (idea generation), How? Unique, timely, interpreted differently
     2. Signal capture: Translate idea into a position
@@ -431,6 +433,7 @@ Also see p.291-292
 ### Setting Weights
 
 Utility function:
+
 $$ E[U] = E[rs-rb] - \lambda\sigma^2(rs-rb) $$
 
 - Active Return instead of Total Return
@@ -447,8 +450,8 @@ $$ E[U] = E[rs-rb] - \lambda\sigma^2(rs-rb) $$
 - Pure active risk: cannot be rewarded on average, zero-sum game
 - To optimize a manager structure, optimize pure active return against total active risk (pure active risk + net misfit risk taken across all managers)
 - Information Ratio
-    - For a single manager: Pure information ratio $ IR = \frac{\alpha}{\omega} $
-    - For a portfolio of active managers: $ IR = \frac{\alpha}{\sigma_A} $ where simple active risk $\sigma_A$ is the aggregation of the $\omega$ term plus any net misfit risk remaining across the group of managers
+    - For a single manager: Pure information ratio $IR = \frac{\alpha}{\omega}$
+    - For a portfolio of active managers: $IR = \frac{\alpha}{\sigma_A}$ where simple active risk $\sigma_A$ is the aggregation of the $\omega$ term plus any net misfit risk remaining across the group of managers
 - Lower active risk manager is preferred (assuming same information ratio), risk is punished twice
 
 ## Investment Performance Presentation
