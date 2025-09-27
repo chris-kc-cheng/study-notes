@@ -25,7 +25,7 @@
     1. Diligence and Reasonable Basis
     2. Communication with Clients and Prospective Clients
 6. Conflicts of Interest
-    1. Avoid of Disclose Conflicts
+    1. Avoid or Disclose Conflicts
     2. Priority of Transactions
     3. Referral Fees
 7. Responsibilities as a CFA Institute Member or CFA Candidate
@@ -54,9 +54,9 @@ Use price of the underlying (i.e. Spot price) instead of futures price. Otherwis
 
 **Notional return** = (Total margin receipt + notional income) / Actual economic exposure
 
-Note: Same formula for regardless future is long or short.
+Note: Same formula applies regardless of whether the future is long or short.
 
-For notional return calculation, the denominator is always positive regaredless the futures are long or short.
+For notional return calculation, the denominator is always positive regardless the futures are long or short.
 
 #### Forwards
 
@@ -242,7 +242,7 @@ Note: Please refer to p.359 for revised country allocation
 #### Exposure Decomposition - Duration Based (Brinson-Hood-Beebower)
 
 - Top down, benchmark-relative, transactional
-- intuitive, simple data requirement, good for marketing/client reports, not well-versed for quantitative analysis
+- Intuitive, simple data requirement, good for marketing/client reports, not well-versed for quantitative analysis
 
 | Factor | Return | Notes |
 |:-------|:------:|-------|
@@ -254,7 +254,7 @@ Note: Please refer to p.359 for revised country allocation
 
 #### Yield Curve Decomposition - Duration Based
 
-- Either top-down (group by portfolio or bucket-level) or buttom-up (security level), buy-and-hold
+- Either top-down (group by portfolio or bucket-level) or bottom-up (security level), buy-and-hold
 - Can be applied separately to portfolios and benchmarks. Difference between the two is the effect of active portfolio management decisions.
 - Requires more data, better suited to decision makers, summary version can be used for marketing/client reports
 - Break down when instruments have embedded options or large movements in market yield (Solution: Use effective duration instead of Modified duration)
@@ -277,7 +277,7 @@ Note: Residual = Actual return - Estimated return
 #### Yield Curve Decomposition - Full Repricing
 
 - Bottom-up security repricing, buy-n-hold
-- Can deal with a broader range of instrument ypes and yield changes
+- Can deal with a broader range of instrument types and yield changes
 - Greater variety of quantitative modeling outside of attribution e.g. ex ante risk
 
 | Factor | Return | Notes |
@@ -300,7 +300,7 @@ No residual
 
 ### Topics
 - Managers' skill should be sufficient to overcome fee and trading costs
-- Gross-of-fee analysis maybe useful for asset owners with sufficient scale to negotiate
+- Gross-of-fee analysis may be useful for asset owners with sufficient scale to negotiate
 - t-statistic is the ratio of the estimated intercept to its standard error. e.g. $t=\frac{\alpha}{s/\sqrt{n}}$. No skill if t-value < 2.
 - Type I error: Hiring (or retaining) an unskilled manager, error of commission
 - Type II error: Not hiring (or firing) a skilled manager
@@ -310,8 +310,8 @@ No residual
   2. Appropriate estimation model (reflect risk exposure) e.g. CAPM
   3. Validate the model fit
 - 14 common pitfalls
-  1. Noise, use quality control chart
-  2. Past return is not reliable indicator of future performance, should also assess firm, process and sfaff
+  1. Noise, use quality control chart, should lie within one (two) standard-error confidence interval 68% (95%) of the time
+  2. Past return is not reliable indicator of future performance, should also assess firm, process and staff
   3. Benchmark, should represent the process, risk factor, investible with proper treatment of cash, non-linear relationships
   4. Appraisal measure, context matters - standalone vs total portfolio
   5. Scalability of risk, if there is restriction in leverage or hedging
@@ -346,6 +346,12 @@ Superior Active Managers
 - High active share and low turnover
 - Lower expense ratios, load fees and turnover tends to outperform (high cash holdings tends to underperform)
 
+Choosing Appraisal Measures
+- Unambiguous Benchmark: Information ratio
+- Uncertain Benchmarks: Appraisal ratio
+- Standalone: Full range of measures
+- Portfolio: Appraisal ratio (yield the largest improvement in investor's overall Sharpe ratio)
+
 For Sharpe, Information and Appraisal ratios, the t-statistic is equal to the respective ratio multiplied by the square root of the **number of periods** (# of years if ratios are annualized)
 
 Addition to Current Portfolio
@@ -361,10 +367,11 @@ $$ Appraisal\ Ratio = \frac{\alpha}{\sigma_\epsilon} $$
 where $\sigma_\epsilon$ is the "standard error of regression" and is the standard deviation of $\epsilon_t$
  
 Appraisal of non-linear strategies
-- If option-like returns are insignificant, may add risk factor to model or create custome benchmark e.g. Elton-Gruber
+- If option-like returns are insignificant, may add risk factor to model or create custom benchmark e.g. Elton-Gruber
 - If non-linear payoffs are significant, use more complex "strategy-based" factors that minic the changing non-linearity
-    - $C(k_1)$, $C(k_2)$, $P(k_1)$, $P(k_2)$
-    - Fung and Hsieh: $RMRF$, $SMB$, $TREAS10YR$ (Constant maturity yield), $CREDIT$ (Baa - Treasury yield), $BONDPTFS$, $CURRPTFS$, $COMMPTFS$ (3 primitive trend-following strategies)
+    - $C(k_1)$, $C(k_2)$, $P(k_1)$, $P(k_2)$, mimic the changing non-linearity
+    - Fung and Hsieh: $RMRF$, $SMB$, $TREAS10YR$ (Constant maturity yield), $CREDIT$ (Baa - Treasury yield), $BONDPTFS$, $CURRPTFS$, $COMMPTFS$ (3 primitive trend-following strategies), mimic the skewed returns
+    - To have the same conditional skewness, the factor needs to have large returns of the same sign and at the same time as the positions held by the fund.
 - If non-linearity is result from TAA
     - Treynor-Mazuy (proportional timer): $RMRF$, $(RMRF_t)^2$
     - Henriksson-Merton (2 values of beta): $RMRF$, $(RMRF_t)^+$
@@ -400,9 +407,9 @@ CAPM appraisal ratio is suitable for client who wants to limit tracking error bu
 
 - Process: 3 steps
     1. Universe: suitability, style, active vs passive
-    2. Quantitative analysis: Quantative IDD, attribution & appraisal, capture ratio, drawdown
+    2. Quantitative analysis: Quantitative IDD, attribution & appraisal, capture ratio, drawdown
     3. Qualitative analysis
-- The smaller the difference in sample size and distribution mean (doesn't make a difference whoever I hired/fired) AND the wider the dispersion of the distribution (easier to distinguish relative skill), the smaller the expected cost of Type I and Type II error.
+- The smaller the difference in sample size and distribution mean (doesn't make a difference whomever I hired/fired) AND the wider the dispersion of the distribution (easier to distinguish relative skill), the smaller the expected cost of Type I and Type II error.
 - Less frequent trading requires higher betting average (absolute) to produce the same risk-adjusted return
 - If manager performance is **mean-reverting**
     - Type I error: Reject null hypothesis of no skill. Error of commission. Explicit cost.
@@ -459,7 +466,7 @@ $$ E[U] = E[rs-rb] - \lambda\sigma^2(rs-rb) $$
 ### GIPS Standard
 
 - Applied on a firm-wide basis, held out to the public as a distinct business entity
-- At least five-year period or since inception, build up to a minimum of 10 years
+- At least five-year period or since inception, eventually build up to a minimum of 10 years
 - Total firm assets:
     - Include non-discretionary (unable to fully implement) portfolio assets, and assets managed by sub-advisors that the firm has authority to select
     - NOT include advisory-only (no authority) assets, uncalled committed capital, or overlay exposure
