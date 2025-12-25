@@ -41,8 +41,23 @@
 - Variable `VAR` is computed using *lazy evaluation*
 - `FILTER`, `ADDCOLUMNS` and `GENERATE` are also iterators even though they do not aggregate results
 - Relational functions
-  - `RELATED()` can access the *one-side* from the *many-side* of a relationship
-  - `RELATEDTABLE()` can access the *many-side* from the *one-side* of a relationship
+  - `RELATED` can access the *one-side* from the *many-side* of a relationship
+  - `RELATEDTABLE` can access the *many-side* from the *one-side* of a relationship
+
+## Basic Table Functions
+
+- `VAR` can also store table
+- In nested table functions, the innermost function is evaluated first (different from `CALCULATE` AND `CALCULATETABLE`)
+- *Calculated table* is not available in Excel
+- `EVALUATE` can be used to inspect the result of a table
+- `FILTER` is both a table function and an iterator
+- `ALL` ignores *any* existing filter. We declare the columns we want. The paramemeter can be a table name or a list of column names
+- Use `ALLEXCEPT` if we want to ignore *most* but not all columns of a table
+- `VALUES` returns only the distinct visible values given the filter in the report. 
+- `VALUES` considers the blank row as a valid row, but `DISTINCT` does not. Both also accpet a table as an argument
+- `SELECTEDVALUE` is equivalent to `IF(HASONEVALUE(), VALUES())`
+- `ALLSELECTED` removes filters applied outside the visual, but keeps filters applied inside the visual
+
 
 ## References
 
