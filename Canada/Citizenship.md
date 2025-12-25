@@ -87,17 +87,22 @@
 
 ## How Canadians Govern Themselves 🏛️
 
-### Levels of Government
+Canada is a federal state, a parliamentary democracy and a constitutional monarchy
 
-- Federal State
-  - Defence, foreign policy, interprovincial trade and communication, currency, navigation, criminal law and citizenship
-- Provincial
-  - Municipal government, education, health, natural resources, property and civil rights, highways
+### Federal State
+
+- `3` levels of government
+- 1️⃣ Federal
+  - Responsibilities: Defence, foreign policy, interprovincial trade and communication, currency, navigation, criminal law and citizenship
+- 2️⃣ Provincial
+  - Responsibilities: Municipal government, education, health, natural resources, property and civil rights, highways
+- 3️⃣ Local or municipal
+  - A mayor (or a reeve) and councillors or aldermen
+  - Council passes by-laws
+  - Responsibilities: Urban or regional planning, streets and roads, sanitation, snow removal, firefighting, ambulance and other emergency services, recreational facilities, public transit and some local health and social services. Major urban centres have municipal police forces
 - Shared Jurisdictions
   - Agriculture, immigration
-- Local or municipal
-  - Council passes by-laws
-  - Urban or regional planning, streets and roads, sanitation, snow removal, firefighting, ambulance and other emergency services, recreational facilities, public transit and some local health and social services. Major urban centres have municipal police forces
+
 
 ### Parliamentary Democracy
 
@@ -111,12 +116,12 @@
 
 ### Constitutional Monarchy
 
-  - Head of **State** - the [Sovereign](## "King Charles III is the current Head of State")
-    - Represented by the [Governor General of Canada](## "Mary Simon is the current Governor General of Canada"), the [Lieutenant Governor](## "Edith Dumont is the current Lieutenant Governor of Ontario") (10 provinces), for `5` years
-  - Head of **Government** - the Prime Minister
-    - [Premier](## "Doug Ford is the current Ontario premier") (each province)
-    - Commissioner (3 territories)
-  - Three branches of government - Executive, Legislative, and Judicial
+- Head of **State** - the [Sovereign](## "King Charles III is the current Head of State")
+  - Represented by the [Governor General of Canada](## "Mary Simon is the current Governor General of Canada"), the [Lieutenant Governor](## "Edith Dumont is the current Lieutenant Governor of Ontario") (10 provinces), for `5` years
+- Head of **Government** - the Prime Minister
+  - [Premier](## "Doug Ford is the current Ontario premier") (each province)
+  - Commissioner (3 territories)
+- `3` branches of government - Executive, Legislative, and Judicial
 
 ## Federal Elections ✅
 
@@ -129,10 +134,17 @@
 - Rule of law, freedom under the law, democratic principals and due process
 - The Supreme Court of Canada is the highest court
 
-## Canadian Symbols 🦫
+## Canadian Symbols 🪿
 
-- 🇨🇦 New Canadian flag `1965`
-- ⚜️ Fleur-de-lis
+- 👑 The Canadian Crown, symbol of the state
+- 🇨🇦  Flags in Canada, the new Canadian flag was raised for the first time since `1965`
+- 🍁 The Maple Leaf
+- ⚜️ The Fleur-de-lis
+- 🌊 Coat of Arms and Motto - "A Mari Usque Ad Mare" (From Sea to Sea)
+- 🏰 Parliament Buildings
+- 🏒 Popular Sports: hockey, football, curling, lacrosse
+- 🦫 The beaver
+- 💬 Two official languages
 - 🎖️ The Order of Canada recognizes outstanding citizens
 - ✝️ The Victoria Cross, the highest honour to Canadians
 
@@ -143,29 +155,29 @@
 
 ## Canada's Regions 🗺️
 
-- Regions - Provinces and Territories (Capitals)
-    - Atlantic Provinces
+- Regions - Provinces and Territories (Capital Cities)
+    - 🦞 Atlantic Provinces
         - ![NL](flags/NL.png) Newfoundland and Labrador (St. John's), own time zone
         - ![PE](flags/PE.png) Prince Edward Island (Charlottetown)
         - ![NS](flags/NS.png) Nova Scotia (Halifax)
         - ![NB](flags/NB.png) New Brunswick (Fredericton), bilingual province
-    - Central Canada
+    - 🏭 Central Canada
         - ![QC](flags/QC.png) Quebec (Quebec City)
         - ![ON](flags/ON.png) Ontario (Toronto)
-    - Prairie Provinces
+    - 🌽 Prairie Provinces
         - ![MB](flags/MB.png) Manitoba (Winnipeg)
         - ![SK](flags/SK.png) Saskatchewan (Regina)
         - ![AB](flags/AB.png) Alberta (Edmonton)
-    - West Coast
+    - 🪵 West Coast
         - ![BC](flags/BC.png) British Columbia (Victoria)
-    - North
+    - ⛏️ North
         - ![YT](flags/YT.png) Yukon (Whitehorse)
         - ![NT](flags/NT.png) Northwest Territories (Yellowknife)
         - ![NU](flags/NU.png) Nunavut (Iqaluit)
-- Ottawa, capital since `1857`
+- National Capital: Ottawa, chosen by Queen Victoria in `1857`
 - Population: 34 million
 
 ## Useful Links 🔗
 
-https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/pub/discover.pdf
-https://canoo.ca/canadian-citizenship-practice-test/
+1. [Official Study Guide - Discover Canada](https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/pub/discover.pdf)
+2. [Canoo Citizenship Practice Test](https://canoo.ca/canadian-citizenship-practice-test/)
