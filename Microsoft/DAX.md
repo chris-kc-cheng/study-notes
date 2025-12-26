@@ -6,7 +6,7 @@
 - The relationships are always `LEFT OUTER JOINs`
 - The arrows indicate the *cross filter* direction of each relationship
 - Filtering always happens from the *one-side* of the relationship to the *many-side*
-- Similar to Excel's [*Format as Table*](## "e.g. =[@ColName], =SUM[ColName]") references but not limited to one table
+- Similar to Excel's [*Format as Table*](## "e.g. =[@ColName], =SUM([ColName])") references but not limited to one table
 - Must specify table name when referencing column
 - *Iterators*, formulas that end with X like `SUMX`, iterate over a table, perform  a calculation on each row, and aggregate the result to produce a single value
 - DAX requires theory, copying formulas from the web may not work as expected
@@ -58,6 +58,41 @@
 - `SELECTEDVALUE` is equivalent to `IF(HASONEVALUE(), VALUES())`
 - `ALLSELECTED` removes filters applied outside the visual, but keeps filters applied inside the visual
 
+<details>
+<summary>Examples of <h5 style="display:inline-block">EVALUATION</h5></summary>
+
+```DAX
+EVALUATE
+FILTER(
+    'Table',
+    'Table'[Column1] > 1
+)
+
+EVALUATE
+{[Measure]}
+
+EVALUATE
+SUMMARIZECOLUMNS (
+    FILTER(
+        'Table',
+        'Table'[Column1] > 1
+    ),
+    "Result", [Measure]
+)
+```
+</details>
+
+
+## Evaluation Contexts
+
+- *Filter context* **filters**, it does not iterate
+- *Row context* **iterates**, it does not filter
+  - *Calculated columns* is always executed in a row context
+  - Row context can also be created manually by starting an iteration
+- The two evaluation contexts can exist at the same time, but they do not interact
+- Aggregators only use the filter context, and they ignore the row context
+- The newly created (inner) row context hides the previous existing (outer) row context. To access the outer row context, use variables (preferred) or  `EARLIER`/`EARLIEST`
+- 
 
 ## References
 
