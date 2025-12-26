@@ -5,6 +5,7 @@
 - DAX computes formulas over a *data model*
 - The relationships are always `LEFT OUTER JOINs`
 - The arrows indicate the *cross filter* direction of each relationship
+- Avoid bidirectional relationships unless absolutely necessary
 - Filtering always happens from the *one-side* of the relationship to the *many-side*
 - Similar to Excel's [*Format as Table*](## "e.g. =[@ColName], =SUM([ColName])") references but not limited to one table
 - Must specify table name when referencing column
@@ -40,9 +41,6 @@
     2. Presented as aggregates
 - Variable `VAR` is computed using *lazy evaluation*
 - `FILTER`, `ADDCOLUMNS` and `GENERATE` are also iterators even though they do not aggregate results
-- Relational functions
-  - `RELATED` can access the *one-side* from the *many-side* of a relationship
-  - `RELATEDTABLE` can access the *many-side* from the *one-side* of a relationship
 
 ## Basic Table Functions
 
@@ -57,6 +55,7 @@
 - `VALUES` considers the blank row as a valid row, but `DISTINCT` does not. Both also accpet a table as an argument
 - `SELECTEDVALUE` is equivalent to `IF(HASONEVALUE(), VALUES())`
 - `ALLSELECTED` removes filters applied outside the visual, but keeps filters applied inside the visual
+- 
 
 <details>
 <summary>Examples of <h5 style="display:inline-block">EVALUATION</h5></summary>
@@ -82,7 +81,6 @@ SUMMARIZECOLUMNS (
 ```
 </details>
 
-
 ## Evaluation Contexts
 
 - *Filter context* **filters**, it does not iterate
@@ -92,7 +90,13 @@ SUMMARIZECOLUMNS (
 - The two evaluation contexts can exist at the same time, but they do not interact
 - Aggregators only use the filter context, and they ignore the row context
 - The newly created (inner) row context hides the previous existing (outer) row context. To access the outer row context, use variables (preferred) or  `EARLIER`/`EARLIEST`
-- 
+- *Row context* does not propagate through relationships automatically. Use the following relationship functions to access related tables
+    - `RELATED` can access the *one-side* from the *many-side* of a relationship
+    - `RELATEDTABLE` can access the *many-side* from the *one-side* of a relationship
+    - Both functions work for *one-to-one* relationships
+    - However, `RELATEDTABLE` only work in *many-to-many* relationships are in the same *cross-filter* direction
+    - No functions are needed with *filter context*
+- `SUMMARIZE` generates a table with the unique combinations of the specified columns, similar to SQL `GROUP BY`
 
 ## References
 
