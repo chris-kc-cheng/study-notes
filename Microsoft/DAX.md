@@ -107,7 +107,7 @@ SUMMARIZECOLUMNS (
 - `CALCULATE` accepts list of values `Table[Column1] IN {"1", "2"}` or boolean conditions
 - Boolean conditions in the filter arguments syntactic sugar for `FILTER` function. However, it only works on a single column
 - For complex conditions involving multiple columns, use `FILTER` function explicitly
-- Use `ALL` inside `CALCULATE` to remove all the filters on specific columns or entire tables. You can use multiple `ALL` functions in a single `CALCULATE`
+- Use `ALL` inside `CALCULATE` to **remove** all the filters on specific columns or entire tables. You can use multiple `ALL` functions in a single `CALCULATE`. It does not behave as a table function here. `REMOVEFILTERS` is equivalent to `ALL` inside `CALCULATE`.
 - To remove all filters from any table, use `ALL` with the *fact table*
 - Use `VALUES` inside `CALCULATE` to restore part of the *filter context*
 - `KEEPFILTERS` **adds** the new filter to the existing ones instead of overwriting them
@@ -116,7 +116,12 @@ SUMMARIZECOLUMNS (
 - `CALCULATE` evaluates its filter arguments first before evaluating the measure
 - All filter arguments are executed in the filter context outside of `CALCULATE`, and each filter is evaluated independently
 - In nested `CALCULATE` statements, the outermost filter are applied first, and the innermost later
-
+- `CALCULATE` invalidates any *row context*. It automatically adds as filter arguments all the columns that are currently being iterated in any row context
+- Every *measure* reference always has an implicit `CALCULATE` surrounding it
+- Hidden circular dependencies may occur when there are more than one *calculated columns* when the *context transition* add each other as filter arguments, unless the table contains one column with unique values and DAX is aware of that because it is on the *one-side* of a one-to-many relationship
+- `USERELATIONSHIP` temporarily activates an inactive relationship, deactiviating the active one outside of `CALCULATE`
+- `CROSSFILTER` allows changing the relationship between two tables to either `NONE`, `ONEWAY`, or `BOTH`
+- Modifiers like `USERELATIONSHIP`, `CROSSFILTER`, and `ALL*` are always applied before any explicit filter arguments
 
 <details>
 <summary>Examples of <h5 style="display:inline-block">CALCULATE</h5></summary>
@@ -157,7 +162,6 @@ CALCULATE (
 )
 
 ```
-
 </details>
 
 ## References
