@@ -164,8 +164,17 @@ CALCULATE (
 ```
 </details>
 
+## Variables
+
+- Variables improve readability and performance
+- Variables can be defined during an iteration
+- DAX Variable is *constant* and cannot be modified
+- Variables are evaluated once in the scope of definition `VAR`
+- One should access the columns of table variable using their *original* names. Variable name is not an alias of the underlying table
+- One frequent scenario is to save the results of a calculation and use it later when filter context changes
+
 ## References
 
-1. [The Definitive Guide to DAX, 2nd Edition by Marco Russo and Alberto Ferrari](https://www.sqlbi.com/books/the-definitive-guide-to-dax/)
+1. [The Definitive Guide to DAX](https://www.microsoftpressstore.com/store/definitive-guide-to-dax-mastering-the-semantic-model-9780138244804) by Marco Russo and Alberto Ferrari ( 3rd Edition was published in Dec 2025)
 2. [DAX Patterns](https://www.daxpatterns.com/)
 3. [DAX Formatter by SQLBI](https://www.daxformatter.com/)
