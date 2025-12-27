@@ -55,7 +55,6 @@
 - `VALUES` considers the blank row as a valid row, but `DISTINCT` does not. Both also accpet a table as an argument
 - `SELECTEDVALUE` is equivalent to `IF(HASONEVALUE(), VALUES())`
 - `ALLSELECTED` removes filters applied outside the visual, but keeps filters applied inside the visual
-- 
 
 <details>
 <summary>Examples of <h5 style="display:inline-block">EVALUATION</h5></summary>
@@ -94,11 +93,75 @@ SUMMARIZECOLUMNS (
     - `RELATED` can access the *one-side* from the *many-side* of a relationship
     - `RELATEDTABLE` can access the *many-side* from the *one-side* of a relationship
     - Both functions work for *one-to-one* relationships
-    - However, `RELATEDTABLE` only work in *many-to-many* relationships are in the same *cross-filter* direction
+    - However, `RELATEDTABLE` only work in *many-to-many* relationships through a bridge table if both *cross-filters* are in the same direction
     - No functions are needed with *filter context*
 - `SUMMARIZE` generates a table with the unique combinations of the specified columns, similar to SQL `GROUP BY`
+
+## `CALCULATE` and `CALCULATETABLE`
+
+- `CALCULATE` returns a scalar value, while `CALCULATETABLE` returns a table
+- Both functions create new *filter contexts* by merging its filter parameters with the existing filter contexts
+- If multiple filter arguments affect the same column, they are merged together using an `AND` operation
+- Any previously existing filter contained in the filter argument is **overwritten** by the new filter. It does not overwrite other filters outside the filter argument
+- Once the function ends, the previous *filter context* is restored
+- `CALCULATE` accepts list of values `Table[Column1] IN {"1", "2"}` or boolean conditions
+- Boolean conditions in the filter arguments syntactic sugar for `FILTER` function. However, it only works on a single column
+- For complex conditions involving multiple columns, use `FILTER` function explicitly
+- Use `ALL` inside `CALCULATE` to remove all the filters on specific columns or entire tables. You can use multiple `ALL` functions in a single `CALCULATE`
+- To remove all filters from any table, use `ALL` with the *fact table*
+- Use `VALUES` inside `CALCULATE` to restore part of the *filter context*
+- `KEEPFILTERS` **adds** the new filter to the existing ones instead of overwriting them
+- A filter argument referencing multiple columns require an explicit table expression
+- For better performance, avoid table filters and always use a filter with the smallest number of columns
+- `CALCULATE` evaluates its filter arguments first before evaluating the measure
+- All filter arguments are executed in the filter context outside of `CALCULATE`, and each filter is evaluated independently
+- In nested `CALCULATE` statements, the outermost filter are applied first, and the innermost later
+
+
+<details>
+<summary>Examples of <h5 style="display:inline-block">CALCULATE</h5></summary>
+
+### Boolean conditions in the filter arguments
+```DAX
+CALCULATE (
+    [Measure],
+    'Table'[Column1] > 1
+)
+```
+is equivalent to
+```DAX
+CALCULATE (
+    [Measure],
+    FILTER(
+        All('Table'[Column1]),
+        'Table'[Column1] > 1
+    )
+)
+```
+
+### Filter with complex conditions
+```DAX
+CALCULATE (
+    [Measure],
+    Table[Column1] * Table[Column2] > 100
+)
+```
+is invalid, and should be written as
+```DAX
+CALCULATE (
+    [Measure],
+    FILTER(
+        ALL(Table[Column1], Table[Column2]),
+        Table[Column1] * Table[Column2] > 100
+    )    
+)
+
+```
+
+</details>
 
 ## References
 
 1. [The Definitive Guide to DAX, 2nd Edition by Marco Russo and Alberto Ferrari](https://www.sqlbi.com/books/the-definitive-guide-to-dax/)
-2. [DAX Formatter by SQLBI](https://www.daxformatter.com/)
+2. [DAX Patterns](https://www.daxpatterns.com/)
+3. [DAX Formatter by SQLBI](https://www.daxformatter.com/)
