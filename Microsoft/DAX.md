@@ -173,8 +173,18 @@ CALCULATE (
 - One should access the columns of table variable using their *original* names. Variable name is not an alias of the underlying table
 - One frequent scenario is to save the results of a calculation and use it later when filter context changes
 
+## Iterators
+
+- *Iterator cardinality* is the number of rows being iterated
+- Iterators requires you to always define, in this order:
+  1. The granularity
+  2. The expression
+  3. The kind of aggregation
+- `ADDCOLUMNS` and `SELECTCOLUMNS` are iterators that return a table, often used when authoring fast measures
+
 ## References
 
 1. [The Definitive Guide to DAX](https://www.microsoftpressstore.com/store/definitive-guide-to-dax-mastering-the-semantic-model-9780138244804) by Marco Russo and Alberto Ferrari ( 3rd Edition was published in Dec 2025)
-2. [DAX Patterns](https://www.daxpatterns.com/)
+2. [DAX Guide](https://dax.guide/)
 3. [DAX Formatter by SQLBI](https://www.daxformatter.com/)
+4. [DAX Patterns](https://www.daxpatterns.com/)
