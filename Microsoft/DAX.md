@@ -182,9 +182,19 @@ CALCULATE (
   3. The kind of aggregation
 - `ADDCOLUMNS` and `SELECTCOLUMNS` are iterators that return a table, often used when authoring fast measures
 
+## Calculation Groups
+
+- *Calculation group* is a collection of *calculation items*
+- Inside a *calculation item*, you can use `SELECTEDMEASURE` as a placeholder of the measure being modified
+- *Calculation group* looks like a table, and *calculation items* is like a row. User can place *calculation items* on rows/columns in a matrix
+- DAX starts with the *calculation group* with the highest precedence
+- `ISSELECTEDMEASURE` (preferred) and `SELECTEDMEASURENAME` provide information about the selected measure
+- Avoid using `CALCULATE` inside *calculation items*
+- User-defined functions should be considered the primary tool for reusing code
+
 ## References
 
-1. [The Definitive Guide to DAX](https://www.microsoftpressstore.com/store/definitive-guide-to-dax-mastering-the-semantic-model-9780138244804) by Marco Russo and Alberto Ferrari ( 3rd Edition was published in Dec 2025)
+1. [The Definitive Guide to DAX](https://www.microsoftpressstore.com/store/definitive-guide-to-dax-mastering-the-semantic-model-9780138244804), by Marco Russo and Alberto Ferrari (3rd Edition was published in Dec 2025)
 2. [DAX Guide](https://dax.guide/)
 3. [DAX Formatter by SQLBI](https://www.daxformatter.com/)
 4. [DAX Patterns](https://www.daxpatterns.com/)
