@@ -3,7 +3,7 @@
 ## What is DAX?
 
 - DAX computes formulas over a *data model*
-- The relationships are always `LEFT OUTER JOINs`
+- The relationships are always `LEFT OUTER JOIN`s
 - The arrows indicate the *cross filter* direction of each relationship
 - Avoid bidirectional relationships unless absolutely necessary
 - Filtering always happens from the *one-side* of the relationship to the *many-side*
@@ -221,6 +221,13 @@ Type     | Subtype | Passing mode
 
 - Function name should be in PascalCase, dot (`.`) is recommended for delineating categories. Parameter names in camelCase
 - Use triple slash `///` for comments describing functions
+
+## Visual Calculations
+
+- A visual calculation is a virtual DAX calculated column added to a Power BI visual instead of the model
+- The virtual table consists of only rows and columns, there is no hierarchy nor have any sort order
+- It does not have access to the semantic model and cannot be shared among visuals
+- `RUNNINGSUM`, `FIRST`, `LAST`, `RANGE`, `PREVIOUS`, `NEXT` are syntactic sugar over window functions
 
 ## References
 
