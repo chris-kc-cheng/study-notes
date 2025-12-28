@@ -9,6 +9,8 @@ A collection of my study notes and cheat sheets for educational purposes.
 ## Data Science
 
 - [DAX](Microsoft/DAX.md)
+- [Power Query](Microsoft/M.md)
+
 
 ## Miscellaneous
 

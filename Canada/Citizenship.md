@@ -181,3 +181,4 @@ Canada is a federal state, a parliamentary democracy and a constitutional monarc
 
 1. [Official Study Guide - Discover Canada](https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/pub/discover.pdf)
 2. [Canoo Citizenship Practice Test](https://canoo.ca/canadian-citizenship-practice-test/)
+3. [Toronto Public Library](https://www.torontopubliclibrary.ca/new-to-canada/citizenship.jsp)
