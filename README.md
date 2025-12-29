@@ -15,3 +15,4 @@ A collection of my study notes and cheat sheets for educational purposes.
 ## Miscellaneous
 
 - [Canada Citizenship Test](Canada/Citizenship.md)
+- [Texas Instruments TI-36X Pro](TI/36XPro.md)
