@@ -182,6 +182,33 @@ CALCULATE (
   3. The kind of aggregation
 - `ADDCOLUMNS` and `SELECTCOLUMNS` are iterators that return a table, often used when authoring fast measures
 
+## Time Intelligence
+
+- `Date` is a reserved word, while Dates is not
+- Most time intelligence functions require a separate *date table*
+- Avoid using Auto Date/Time feature because it generates one table per date column (unrelated to on another) and the tables are hidden and cannot be modified
+- Best practices
+  1. Contains all dates, no gaps
+  2. *Date* data type is preferred
+  3. Marked as a *Date table*, DAX will automatically add `ALL`
+- `CALENDARAUTO` scans all date columns which may not be desiable. It accept an optional argument for fiscal year end
+- `CALENDAR` requires the date range
+- Use `ADDCOLUMNS` to create additional columns
+- Design options:
+  1. Multiple relationship to the same date table (preferred)
+     - Inactive relationships can be activated through the `USERELATIONSHIP` modifier in `CALCULATE`
+     - Role-playing dimension
+  2. Creating multiple data tables
+     - Use this design only if you need to intersect the same measure by different dates in the same visualization
+- `DATESYTD`, `DATESQTD`, `DATESMTD` returns a table with all dates and requires the use of `CALCULATE`
+- `TOTALYTD`, `TOTALQTD`, `TOTALMTD` hides the `CALCULATE`
+- `SAMEPERIODLASTYEAR` is a specialized version of the more generic `DATEADD`
+- `PARALLELPERIOD`, `PREVIOUS…`, `NEXT…` returns the full period instead
+- If multiple periods are selected, `PARALLELPERIOD` shifts result of all of them, e.g. Q1 = Dec + Jan + Feb
+- Intelligence functions can be cascaded, however a wrong nesting order may produce unexpected result if the date table does not contain a row in the `NEXTDAY`
+- `DATESINPERIOD` is usually the best option for the moving calculation
+- `LASTDATE`, `LASTNONBLANK` are often used in semi-additive calculations (e.g. last balance)
+
 ## Calculation Groups
 
 > [!TIP]
@@ -193,6 +220,46 @@ CALCULATE (
 - DAX starts with the *calculation group* with the highest precedence
 - `ISSELECTEDMEASURE` (preferred) and `SELECTEDMEASURENAME` provide information about the selected measure
 - Avoid using `CALCULATE` inside *calculation items*
+
+## Filter Context
+
+- `HASONEVALUE` detects multiple selection
+- `ISFILTERED` checks whether a *column* has a *direct* filter on it
+- `ISCROSSFILTERED` checks whether a *table* is cross-filtered
+- A column is filtered is also cross-filtered, but not the opposite
+- `VALUES` returns values visible in filter context, while `FILTER`  return values that are currently being filtered by the filter context
+- `VALUES` and `ALL` can be used together to produce the desired result
+- With `ALL` inside `CALCULATE`, the DAX optimizer will not perform any *context transition*
+- `ISEMPTY` is more efficient than `COUNTROWS() = 0`
+- `TREATAS` can change the *linage* of a column
+
+## Hierarchies
+
+- Ratio-to-parent is simple to create with visual calculations, but not so in DAX
+- `ISINSCOPE` check if the column passed as argument is filtered and is part of columns used to perform the grouping
+- Flattening parent/child hierarchy into regular column-based hierarchy
+  1. `PATH` creates a *calculated column* with a full path separated by the `|` character
+  2. `PATHITEM` and `LOOKUPVALUE` can be used to create additional *calculated columns*.
+  3. Transform the set of level columns into a hierarchy
+- To improve presentation
+  1. `PATHLENGTH` computes the depth of each node
+  2. Sum of `ISINSCOPE` computes the current browsing depth of the report visual
+  3. Check if the node is a leaf
+
+## Working with Tables
+
+- `CALCULATETABLE` first changes the filter context and later evaluate the expression
+- `ADDCOLUMNS` is an *iterator* that returns all rows and columns of the first argument, adding newly created columns
+- `SUMMARIZE` scans a table, performs a group by on any number of columns reachable following the relationships
+- `CROSSJOIN` returns the cartesian product of two tables, useful for joinning for an *OR* condition, or to speed up calculations
+- `UNION` does not remove duplicates, `DISTINCT` removes duplicates but has loses the data *lineage* if values come from different tables. Use `TREATAS` to control the data lineage
+- `INTERSECT` returns only the rows that apear in both tables
+- `EXCEPT` implements *set subtraction* by removing the rows present in the second table
+- `SELECTCOLUMNS` is similar to SQL `SELECT` which implements *projection* of columns and it can add columns, may contain duplicates
+- `ROW` is useful to create a table with a single row
+- Static table can be created with the *table constructor* `{(),{}}`
+- `DATATABLE` create a table data type `{{},{}}` but limited to constant values (no DAX expression)
+- `GENERATESERIES` generates series of values from the lower bound to the upper bound (inclusive) with a step, useful in slicer
 
 ## User Defined Functions (UDFs)
 
