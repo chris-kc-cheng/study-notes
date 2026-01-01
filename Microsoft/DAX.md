@@ -182,6 +182,13 @@ CALCULATE (
   3. The kind of aggregation
 - `ADDCOLUMNS` and `SELECTCOLUMNS` are iterators that return a table, often used when authoring fast measures
 
+## Window Functions
+
+- Window functions sort and partition input table through `ORDERBY` and `PARTITIONBY` helper functions
+- They are the only DAX functions that implement *apply semantics*
+- `INDEX` returns the n-th row of a sorted table, more flexible than `TOPN`
+- 
+
 ## Time Intelligence
 
 - `Date` is a reserved word, while Dates is not
@@ -257,7 +264,7 @@ CALCULATE (
 - `EXCEPT` implements *set subtraction* by removing the rows present in the second table
 - `SELECTCOLUMNS` is similar to SQL `SELECT` which implements *projection* of columns and it can add columns, may contain duplicates
 - `ROW` is useful to create a table with a single row
-- Static table can be created with the *table constructor* `{(),{}}`
+- Static table can be created with the *table constructor* `{(),()}`
 - `DATATABLE` create a table data type `{{},{}}` but limited to constant values (no DAX expression)
 - `GENERATESERIES` generates series of values from the lower bound to the upper bound (inclusive) with a step, useful in slicer
 
