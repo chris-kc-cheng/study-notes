@@ -61,6 +61,14 @@ You may use the arrow keys and `enter` to select a function instead of using the
 | sum(    | Summation $\sum_{i=1}^{3}{x}$ | $6$ | `math` `5` 1 `🡆` 3 `🡆` `x` `enter`
 | prod(   | Product $\prod_{i=1}^{4}{x}$ | $24$ | `math` `6` 1 `🡆` 4 `🡆` `x` `enter`
 
+## Probability
+
+| Function     | Example | Answer | Keystroke | Notes |
+|--------------|---------|--------|-----------|-------|
+| Factorial $n!=\prod_{k=1}^{n}$   | $4!$    | $24$  | 4 `!` `enter` | 
+| Combinations ${}^nC_k=\frac{n!}{r!(n-r)!}$ | ${}^4C_2$ | $6$ | 4 `!` `!` 2 `enter` | Order doesn't matter |
+| Permutations ${}^nP_k=\frac{n!}{(n-r)!}$ | ${}^4P_2$ | $12$ | 4 `!` `!` `!` 2 `enter` | Order matters |
+
 ## Numeric equation solver
 
 Solve $x - 2y = -11$ when $x = 1$
@@ -90,7 +98,7 @@ Solve $x^2-5x+6=0$
 | 5 | | 6 `🡇` |
 | 6 | Solve | `enter`
 | 7 | Solutions 1: $x_1=2$ | `🡇`
-| 8 | Solutions 2: $x_x=3$ | 
+| 8 | Solutions 2: $x_2=3$ | 
 | 9 | Quit | `2nd` `mode`
 
 ## System of linear equations
