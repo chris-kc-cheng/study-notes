@@ -61,6 +61,65 @@ You may use the arrow keys and `enter` to select a function instead of using the
 | sum(    | Summation $\sum_{i=1}^{3}{x}$ | $6$ | `math` `5` 1 `🡆` 3 `🡆` `x` `enter`
 | prod(   | Product $\prod_{i=1}^{4}{x}$ | $24$ | `math` `6` 1 `🡆` 4 `🡆` `x` `enter`
 
+## Numeric equation solver
+
+Solve $x - 2y = -11$ when $x = 1$
+
+| Step | Description | Keystroke |
+|------|-------------|-----------|
+| 1 | Select [num-solv] | `2nd` `sin` |
+| 2 | Left side | `xyzt` `−` 2 `xyzt` `xyzt` `🡆` |
+| 3 | Right side | `(-)` 11 `enter` |
+| 4 | Variable x | 1 |
+| 5 | Solve y | `🡇` `🡇` `🡆` `enter`
+| 6 | Solution: $y=6$ | 
+| 7 | Quit | `2nd` `mode`
+
+## Polynomial solver
+
+### Quadratic equation
+
+Solve $x^2-5x+6=0$
+
+| Step | Description | Keystroke |
+|------|-------------|-----------|
+| 1 | Select [poly-solv] | `2nd` `cos` |
+| 2 | Select quadratic equation | `1` |
+| 3 | Enter equations | 1 `🡇` |
+| 4 | | `(-)` 5 `🡇` |
+| 5 | | 6 `🡇` |
+| 6 | Solve | `enter`
+| 7 | Solutions 1: $x_1=2$ | `🡇`
+| 8 | Solutions 2: $x_x=3$ | 
+| 9 | Quit | `2nd` `mode`
+
+## System of linear equations
+
+### 2×2 system
+
+$$
+\begin{cases} 
+  2x + 3y = 8 \\
+  4x - y = 2
+\end{cases}
+$$
+
+| Step | Description | Keystroke |
+|------|-------------|-----------|
+| 1 | Select [sys-solv] | `2nd` `tan` |
+| 2 | Select 2×2 linear equations | `1` |
+| 3 | Enter coefficients | 2 `enter` |
+| 4 | | `+` 3 `enter` |
+| 5 | | 8 `enter` |
+| 6 | | 4 `enter` |
+| 5 | | 8 `enter` |
+| 6 | | `−` 1 `enter` |
+| 7 | | 2 `enter` |
+| 8 | Solve | `enter`
+| 9 | Solutions: $x=1, y=2$ | 
+| 10 | Quit | `2nd` `mode`
+
+
 ## Reference
 
 1. [Guide Book](https://education.ti.com/html/eguides/scientifics/EN/TI-36X-Pro-guidebook-en.html)
