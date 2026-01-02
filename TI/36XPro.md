@@ -128,6 +128,18 @@ $$
 | 10 | Quit | `2nd` `mode`
 
 
+## Statistics, regressions, and distributions
+
+### Normal Distribution
+
+| Function | Example $(\mu=0, \sigma=1)$ | Keystroke | 
+|----------|---------|-----------|
+| Probability density function (PDF) | $f(0) = 0.39894228$ | `2nd` `data` `🡆` `1` 0  `🡇` `🡇` `🡇` `enter` |
+| Cumulative distribution function (CDF) | $P(-1<X\leq1) = 0.682689481$ | `2nd` `data` `🡆` `2` `🡇` `🡇` `(-)` 1 `🡇` 1 `🡇` `enter` |
+| | $F(-1.96) = 0.024997825$ | `2nd` `data` `🡆` `2` `🡇` `🡇` `(-)` 1 `EE` 99 `🡇` `(-)` 1.96 `🡇` `enter` |
+| Inverse CDF ([PPF](## "Percentage Point Function")) | $F^{-1}(0.025) = -1.959963986$ | `2nd` `data` `🡆` `3` `(-)` 0.25 `🡇` `🡇` `enter` |
+
+
 ## Reference
 
 1. [Guide Book](https://education.ti.com/html/eguides/scientifics/EN/TI-36X-Pro-guidebook-en.html)
