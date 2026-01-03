@@ -70,6 +70,12 @@ EVALUATE
 {[Measure]}
 
 EVALUATE
+ROW (
+    "result",
+        DIVIDE ( EVALUATEANDLOG ( 3 + 4, "a" ), EVALUATEANDLOG ( 1 + 2, "b" ) )
+)
+
+EVALUATE
 SUMMARIZECOLUMNS (
     FILTER(
         'Table',
@@ -85,7 +91,7 @@ SUMMARIZECOLUMNS (
 - *Filter context* **filters**, it does not iterate
 - *Row context* **iterates**, it does not filter
   - *Calculated columns* is always executed in a row context
-  - Row context can also be created manually by starting an iteration
+  - Row context can also be **created manually** by starting an iteration
 - The two evaluation contexts can exist at the same time, but they do not interact
 - Aggregators only use the filter context, and they ignore the row context
 - The newly created (inner) row context hides the previous existing (outer) row context. To access the outer row context, use variables (preferred) or  `EARLIER`/`EARLIEST`
@@ -186,8 +192,9 @@ CALCULATE (
 
 - Window functions sort and partition input table through `ORDERBY` and `PARTITIONBY` helper functions
 - They are the only DAX functions that implement *apply semantics*
-- `INDEX` returns the n-th row of a sorted table, more flexible than `TOPN`
-- 
+- `INDEX` returns the $n^{th}$ row (*absolute* position) of a sorted table, more flexible than `TOPN`
+- When `INDEX` is used as a window function, its default value is `ALLSELECTED` specified in the `ORDERBY` section
+- `OFFSET` returns a *relative* row before or after the current row
 
 ## Time Intelligence
 
@@ -304,6 +311,9 @@ Type     | Subtype | Passing mode
 - `RUNNINGSUM`, `FIRST`, `LAST`, `RANGE`, `PREVIOUS`, `NEXT` are syntactic sugar over window functions
 
 ## Authoring queries
+
+> [!TIP]
+> Wrap expressions with `EVALUATEANDLOG` to trace intermediate results in DAX Studio
 
 - `VAR` in `DEFINE` section has the scope of entire batch of `EVALUATE` statements, `VAR` in `EVALUATE` is local to the table expression in the `RETURN` section
 - `MEASURE` in `DEFINE` section exists only for the lifetime of the query, it has a higher precedence if it shares the same name as a model measure

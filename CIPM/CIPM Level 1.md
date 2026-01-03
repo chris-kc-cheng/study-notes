@@ -1,4 +1,4 @@
-# Cheat Sheet for the CIPM Program Level I
+# CIPM Program Level I
 
 ## Performance Evaluation: Measurement, Attribution, and Appraisal
 
