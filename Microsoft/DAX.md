@@ -303,6 +303,20 @@ Type     | Subtype | Passing mode
 - It does not have access to the semantic model and cannot be shared among visuals
 - `RUNNINGSUM`, `FIRST`, `LAST`, `RANGE`, `PREVIOUS`, `NEXT` are syntactic sugar over window functions
 
+## Authoring queries
+
+- `VAR` in `DEFINE` section has the scope of entire batch of `EVALUATE` statements, `VAR` in `EVALUATE` is local to the table expression in the `RETURN` section
+- `MEASURE` in `DEFINE` section exists only for the lifetime of the query, it has a higher precedence if it shares the same name as a model measure
+- `EVALUATE` requires a table, use `ROW` or table constructor to transform a measure to a table
+- Use `SUMMARIZECOLUMNS` to add columns, avoid using `SUMMARIZE`
+  - `IGNORE` modifier to include blank
+  - `ROLLUPADDISSUBTOTAL` adds a column that indicates subtotal rows
+  - `ROLLUPGROUP` calculates subtotals for a group of columns
+  - Use explicit `FILTER` to filter the result
+  - Not suitable in measures, as it cannot be called from external filter context that has performed context transition
+- `TOPN` to sort and return a subset of rows
+- `GENERATE` iterates a table and evaluates the expression in the row context
+
 ## References
 
 1. [The Definitive Guide to DAX](https://www.microsoftpressstore.com/store/definitive-guide-to-dax-mastering-the-semantic-model-9780138244804), by Marco Russo and Alberto Ferrari (3rd Edition was published in Dec 2025)
@@ -310,3 +324,4 @@ Type     | Subtype | Passing mode
 3. [DAX Formatter by SQLBI](https://www.daxformatter.com/)
 4. [DAX Lib](https://daxlib.org/)
 5. [DAX Patterns](https://www.daxpatterns.com/)
+6. [DAX Studio](https://daxstudio.org/)
