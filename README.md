@@ -4,6 +4,7 @@ A collection of my study notes and cheat sheets for educational purposes.
 
 ## Investments
 - [Certificate In Investment Performance Measurement (CIPM) - Level 2](CIPM/CIPM%20Level%202.md)
+- [Quantitative Finance](Investments/Quantitative%20Finance.md)
 
 ## Artificial Intelligence
 - [Retrieval-Augmented Generation (RAG)](https://github.com/chris-kc-cheng/rag/blob/main/README.md)
